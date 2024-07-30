@@ -12,6 +12,7 @@ Patrocinador.init(
         name: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 len: {
                     args: [0, 30],
@@ -22,6 +23,7 @@ Patrocinador.init(
         cnpj: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: true,
             validate: {
                 is: {
                     args: /^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$/,

@@ -3,7 +3,7 @@
   "tabWidth": 4,
   "printWidth": 120,
   "semi": true,
-  "singleQuote": false,
+  "singleQuote": true,
   "overrides": [
     {
       "files": ["*.json", "*.config.js"],

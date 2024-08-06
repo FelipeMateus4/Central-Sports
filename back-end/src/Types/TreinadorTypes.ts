@@ -2,6 +2,7 @@ import { z } from 'zod';
 
 const treinador = z.object({
     id: z.number(),
+    age: z.number(),
     nome: z.string(),
     especialidade: z.string(),
 });

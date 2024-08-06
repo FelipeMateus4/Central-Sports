@@ -1,10 +1,9 @@
 import { z } from 'zod';
 
 const treinador = z.object({
-    id: z.number(),
+    name: z.string(),
     age: z.number(),
-    nome: z.string(),
-    especialidade: z.string(),
+    specialty: z.string(),
 });
 
 type treinador = z.infer<typeof treinador>;

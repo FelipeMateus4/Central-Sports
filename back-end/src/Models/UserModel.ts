@@ -64,6 +64,10 @@ User.init(
                 },
             },
         },
+        age: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
         secret: {
             type: DataTypes.STRING,
             allowNull: false,

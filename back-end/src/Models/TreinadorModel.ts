@@ -1,7 +1,5 @@
 import sequelize from '../Connections/Sequelize';
 import { DataTypes, Model } from 'sequelize';
-import { treinadorType } from '../Types/TreinadorTypes';
-import internal from 'stream';
 
 class Treinador extends Model {
     declare name: string;
@@ -16,7 +14,7 @@ Treinador.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        cnpj: {
+        age: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },

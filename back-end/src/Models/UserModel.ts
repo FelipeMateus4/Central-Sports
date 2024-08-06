@@ -6,8 +6,9 @@ import bcrypt from 'bcrypt';
 class User extends Model {
     declare email: string;
     declare password: string;
+    declare age: string;
     declare secret: string;
-    declare tipo: string;
+    declare type: string;
 
     public async comparePassword(enteredPassword: string): Promise<boolean> {
         return await bcrypt.compare(enteredPassword, this.password);

@@ -1,5 +1,5 @@
-import sequelize from '../Connections/Sequelize';
 import { DataTypes, Model } from 'sequelize';
+import sequelize from '../Connections/Sequelize';
 import PasswordValidator from 'password-validator';
 import bcrypt from 'bcrypt';
 
@@ -8,6 +8,7 @@ class User extends Model {
     declare password: string;
     declare secret: string;
     declare type: string;
+    declare treinadorId?: number;
 
     public async comparePassword(enteredPassword: string): Promise<boolean> {
         return await bcrypt.compare(enteredPassword, this.password);
@@ -34,14 +35,13 @@ passwordSchema
 
 User.init(
     {
-        // Definindo os atributos da classe
         email: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             validate: {
                 isEmail: {
-                    msg: ' voce deve digitar um email valido',
+                    msg: 'Você deve digitar um email válido',
                 },
             },
         },
@@ -52,12 +52,12 @@ User.init(
             validate: {
                 len: {
                     args: [8, 20],
-                    msg: 'A senha deve ter entre 6 e 20 caracteres',
+                    msg: 'A senha deve ter entre 8 e 20 caracteres',
                 },
                 isPasswordValid(value: string) {
                     if (!passwordSchema.validate(value)) {
                         throw new Error(
-                            'A senha deve ter pelo menos 6 caracteres, 1 letra maiúscula, 1 letra minúscula, 1 número e 1 símbolo'
+                            'A senha deve ter pelo menos 8 caracteres, 1 letra maiúscula, 1 letra minúscula, 1 número e 1 símbolo'
                         );
                     }
                 },
@@ -67,9 +67,17 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        tipo: {
+        type: {
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        treinadorId: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'Treinador',
+                key: 'id',
+            },
         },
     },
     {
@@ -83,7 +91,6 @@ User.init(
                     user.password = await bcrypt.hash(user.password, 10);
                 }
             },
-
             beforeUpdate: async (user: User) => {
                 if (user.password) {
                     user.password = await bcrypt.hash(user.password, 10);

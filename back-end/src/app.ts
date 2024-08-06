@@ -5,6 +5,7 @@ import session from 'express-session';
 import passport from 'passport';
 import flash from 'express-flash';
 import { PatrocinadorRoutes } from './Routes/PatrocinadorRoute';
+import { userTreinadorRoutes } from './Routes/UserTreinadorRoute';
 
 const app = express();
 
@@ -14,6 +15,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 app.use(flash());
-app.use(PatrocinadorRoutes);
+app.use(userTreinadorRoutes);
 
 export { app };

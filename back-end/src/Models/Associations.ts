@@ -3,15 +3,6 @@ import { treinadorModel } from './TreinadorModel';
 
 // Associacoes polimorficas são definidas aqui
 
-treinadorModel.hasMany(userModel, {
-    foreignKey: 'associatedId',
-    constraints: false,
-    scope: {
-        associatedType: 'Treinador',
-    },
-});
-userModel.belongsTo(treinadorModel, {
-    foreignKey: 'associatedId',
-    constraints: false,
-    as: 'treinador',
-});
+// Definindo as associações
+treinadorModel.hasMany(userModel, { foreignKey: 'treinadorModelId' });
+userModel.belongsTo(treinadorModel, { foreignKey: 'treinadorModelId', as: 'treinadorModel' });

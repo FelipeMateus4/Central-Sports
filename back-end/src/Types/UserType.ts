@@ -5,6 +5,7 @@ const user = z.object({
     password: z.string(),
     secret: z.string(),
     type: z.string(),
+    treinadorId: z.number().optional(),
 });
 
 type user = z.infer<typeof user>;

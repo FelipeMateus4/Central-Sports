@@ -6,7 +6,6 @@ import bcrypt from 'bcrypt';
 class User extends Model {
     declare email: string;
     declare password: string;
-    declare age: string;
     declare secret: string;
     declare type: string;
 
@@ -63,10 +62,6 @@ User.init(
                     }
                 },
             },
-        },
-        age: {
-            type: DataTypes.STRING,
-            allowNull: false,
         },
         secret: {
             type: DataTypes.STRING,

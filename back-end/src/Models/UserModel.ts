@@ -92,3 +92,5 @@ User.init(
         },
     }
 );
+
+export { User as userModel };

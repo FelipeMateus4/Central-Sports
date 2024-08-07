@@ -6,7 +6,9 @@ import passport from 'passport';
 import flash from 'express-flash';
 import { userTreinadorRoutes } from './Routes/UserTreinadorRoute';
 import { authRouter } from './Routes/AuthRoute';
+import { config } from 'dotenv';
 
+config();
 const app = express();
 
 app.disable('x-powered-by');
@@ -18,7 +20,7 @@ app.use(flash());
 
 app.use(
     session({
-        secret: 'your-secret-key',
+        secret: process.env.SECRETKEY as string,
         resave: false,
         saveUninitialized: false,
         cookie: {

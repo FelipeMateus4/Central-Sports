@@ -4,6 +4,7 @@ import { userType } from '../Types/UserType';
 import sequelize from '../Connections/Sequelize';
 import TreinadorServices from '../Services/TreinadorServices';
 import { userModel } from '../Models/UserModel';
+import UserServices from '../Services/UserServices';
 
 const router = Router();
 
@@ -33,8 +34,8 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
         user.treinadorId = createdTreinador.id;
 
         // Criação do User
-        await userModel.sync();
-        const createdUser = await userModel.create(user, { transaction });
+
+        const createdUser = await UserServices.createUserServices(user, transaction);
 
         // Commit da transação
         await transaction.commit();

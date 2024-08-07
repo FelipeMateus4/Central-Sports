@@ -20,30 +20,25 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
 
     const treinador: treinadorType = {
         name: req.body.name,
-        age: req.body.age,
-        specialty: req.body.specialty,
+        cpf: req.body.cpf,
+        graduation: req.body.graduation,
     };
 
     const transaction = await sequelize.transaction();
 
     try {
-        // Criação do Treinador
         const createdTreinador: any = await TreinadorServices.createTreinadorService(treinador, transaction);
 
-        // Associar o treinador ao usuário
-        user.treinadorId = createdTreinador.id;
+        user.treinadorModelId = createdTreinador.id;
 
-        // Criação do User
         const createdUser = await UserServices.createUserServices(user, transaction);
 
-        // Commit da transação
         await transaction.commit();
 
         return res
             .status(201)
             .send({ message: 'Treinador e User criados com sucesso.', data: { createdTreinador, createdUser } });
     } catch (error) {
-        // Rollback da transação em caso de erro
         await transaction.rollback();
         next(error);
     }
@@ -55,8 +50,7 @@ router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: N
 
     try {
         const user: any = await UserServices.getUserServices(email, transaction);
-
-        const treinador: any = await TreinadorServices.getTreinadorServices(user.treinadorId, transaction);
+        const treinador: any = await TreinadorServices.getTreinadorServices(user.treinadorModelId, transaction);
 
         await transaction.commit();
 

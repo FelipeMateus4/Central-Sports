@@ -14,11 +14,11 @@ Treinador.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        age: {
-            type: DataTypes.INTEGER,
+        cpf: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
-        specialty: {
+        graduation: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -27,7 +27,7 @@ Treinador.init(
         sequelize,
         modelName: 'Treinador',
         schema: 'public',
-        tableName: 'Treinador',
+        tableName: 'Treinadores',
     }
 );
 

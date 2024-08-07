@@ -8,7 +8,7 @@ class User extends Model {
     declare password: string;
     declare secret: string;
     declare type: string;
-    declare treinadorId?: number;
+    declare treinadorModelId?: number;
 
     public async comparePassword(enteredPassword: string): Promise<boolean> {
         return await bcrypt.compare(enteredPassword, this.password);
@@ -71,7 +71,7 @@ User.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        treinadorId: {
+        treinadorModelId: {
             type: DataTypes.INTEGER,
             allowNull: true,
             references: {
@@ -84,7 +84,7 @@ User.init(
         sequelize,
         modelName: 'User',
         schema: 'public',
-        tableName: 'User',
+        tableName: 'Users',
         hooks: {
             beforeCreate: async (user: User) => {
                 if (user.password) {

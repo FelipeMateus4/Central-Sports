@@ -7,7 +7,6 @@ import flash from 'express-flash';
 import { userTreinadorRoutes } from './Routes/UserTreinadorRoute';
 import { authRouter } from './Routes/AuthRoute';
 import { config } from 'dotenv';
-import syncModels from './Models/SyncModels';
 
 config();
 const app = express();
@@ -35,9 +34,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Inicializar o Passport.js
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(authRouter);
 app.use(userTreinadorRoutes);
 

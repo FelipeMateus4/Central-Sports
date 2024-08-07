@@ -4,7 +4,6 @@ import { Transaction } from 'sequelize';
 
 const createUser = async (user: userType, transaction: Transaction) => {
     try {
-        await userModel.sync();
         return await userModel.create(user, { transaction });
     } catch (error) {
         throw error;

@@ -51,7 +51,15 @@ Abaixo está a estrutura de diretórios do projeto, com uma breve descrição de
   - **setupTests.js**: Script de configuração para testes com Jest.
   - **.prettierrc.json**: Arquivo de configuração do Prettier.
   - **package.json**: Contém as dependências e scripts do projeto.
- 
+
+
+- ### Regras de Clean Code
+- Funções Pequenas e Coesas: Cada função deve fazer apenas uma coisa.
+- Nomes Claros e Descritivos: Use nomes que expliquem a intenção.
+- Evite Comentários Desnecessários: O código deve ser autoexplicativo.
+- Retorne Funções Diretamente: Evite variáveis temporárias desnecessárias.
+- Use Objetos para Agrupar Parâmetros Relacionados: Torne as funções mais fáceis de chamar e entender.
+- Evite Código Duplicado: Reutilize funções para evitar duplicação.
 - ### Mensagens de Commit
 
 - Mensagens curtas e descritivas.

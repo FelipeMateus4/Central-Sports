@@ -33,7 +33,6 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
         user.treinadorId = createdTreinador.id;
 
         // Criação do User
-
         const createdUser = await UserServices.createUserServices(user, transaction);
 
         // Commit da transação

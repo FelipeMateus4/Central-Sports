@@ -4,8 +4,8 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import passport from 'passport';
 import flash from 'express-flash';
-import { PatrocinadorRoutes } from './Routes/PatrocinadorRoute';
 import { userTreinadorRoutes } from './Routes/UserTreinadorRoute';
+import { authRouter } from './Routes/AuthRoute';
 
 const app = express();
 
@@ -35,6 +35,7 @@ app.use(passport.session());
 // Inicializar o Passport.js
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(authRouter);
 app.use(userTreinadorRoutes);
 
 export { app };

@@ -15,6 +15,26 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(cors());
 app.use(flash());
+
+app.use(
+    session({
+        secret: 'your-secret-key',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            secure: false,
+            httpOnly: true,
+            maxAge: 1000 * 60 * 60 * 24, // 1 dia de duracao
+        },
+    })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Inicializar o Passport.js
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(userTreinadorRoutes);
 
 export { app };

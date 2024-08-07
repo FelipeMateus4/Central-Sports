@@ -3,7 +3,6 @@ import { treinadorType } from '../Types/TreinadorTypes';
 import { userType } from '../Types/UserType';
 import sequelize from '../Connections/Sequelize';
 import TreinadorServices from '../Services/TreinadorServices';
-import { userModel } from '../Models/UserModel';
 import UserServices from '../Services/UserServices';
 
 const router = Router();

@@ -7,6 +7,7 @@ import flash from 'express-flash';
 import { userTreinadorRoutes } from './Routes/UserTreinadorRoute';
 import { authRouter } from './Routes/AuthRoute';
 import { config } from 'dotenv';
+import syncModels from './Models/SyncModels';
 
 config();
 const app = express();

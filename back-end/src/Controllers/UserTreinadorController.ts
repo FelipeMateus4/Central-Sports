@@ -4,6 +4,7 @@ import { userType } from '../Types/UserType';
 import sequelize from '../Connections/Sequelize';
 import TreinadorServices from '../Services/TreinadorServices';
 import UserServices from '../Services/UserServices';
+import { ensureAuthenticated } from '../Middlewares/IsAuthenticated';
 
 const router = Router();
 
@@ -43,6 +44,24 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
             .send({ message: 'Treinador e User criados com sucesso.', data: { createdTreinador, createdUser } });
     } catch (error) {
         // Rollback da transação em caso de erro
+        await transaction.rollback();
+        next(error);
+    }
+});
+
+router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+    const email = req.body.email;
+    const transaction = await sequelize.transaction();
+
+    try {
+        const user: any = await UserServices.getUserServices(email, transaction);
+
+        const treinador: any = await TreinadorServices.getTreinadorServices(user.treinadorId, transaction);
+
+        await transaction.commit();
+
+        res.status(200).send({ message: 'Veja seus dados abaixo: ', data: { user, treinador } });
+    } catch (error) {
         await transaction.rollback();
         next(error);
     }

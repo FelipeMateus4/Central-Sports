@@ -4,7 +4,19 @@ import { treinadorModel } from '../Models/TreinadorModel';
 import { Transaction } from 'sequelize';
 
 const createTreinadorService = (treinador: treinadorType, transaction: Transaction) => {
-    return TreinadorPersistence.createTreinador(treinador, transaction);
+    try {
+        return TreinadorPersistence.createTreinador(treinador, transaction);
+    } catch (error) {
+        throw error;
+    }
 };
 
-export default { createTreinadorService };
+const getTreinadorServices = async (id: number, transaction: Transaction) => {
+    try {
+        return await TreinadorPersistence.getTreinador(id, transaction);
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default { createTreinadorService, getTreinadorServices };

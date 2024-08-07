@@ -3,27 +3,33 @@ import { Strategy as LocalStrategy } from 'passport-local';
 import { userModel } from '../Models/UserModel';
 
 passport.use(
-    new LocalStrategy(async (email: any, password: any, done) => {
-        try {
-            const user = await userModel.findOne({
-                where: { email: email },
-            });
-            if (!user) {
-                return done(null, false, {
-                    message: 'Email ou senha incorretos.',
+    new LocalStrategy(
+        {
+            usernameField: 'email',
+            passwordField: 'password',
+        },
+        async (email: any, password: any, done) => {
+            try {
+                const user = await userModel.findOne({
+                    where: { email: email },
                 });
-            }
-            if (!(await user.comparePassword(password))) {
-                return done(null, false, {
-                    message: 'Email ou senha incorretos.',
-                });
-            }
+                if (!user) {
+                    return done(null, false, {
+                        message: 'Email ou senha incorretos.',
+                    });
+                }
+                if (!(await user.comparePassword(password))) {
+                    return done(null, false, {
+                        message: 'Email ou senha incorretos.',
+                    });
+                }
 
-            return done(null, user);
-        } catch (error) {
-            return done(error);
+                return done(null, user);
+            } catch (error) {
+                return done(error);
+            }
         }
-    })
+    )
 );
 
 passport.serializeUser((user: any, done) => {

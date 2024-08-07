@@ -12,4 +12,12 @@ const createTreinador = async (treinador: treinadorType, transaction?: Transacti
     }
 };
 
-export default { createTreinador };
+const getTreinador = async (id: number, transaction: Transaction) => {
+    try {
+        return await treinadorModel.findByPk(id, { transaction });
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default { createTreinador, getTreinador };

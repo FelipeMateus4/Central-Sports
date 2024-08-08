@@ -79,6 +79,14 @@ User.init(
                 key: 'id',
             },
         },
+        atletaModelId: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+            references: {
+                model: 'Atleta',
+                key: 'id',
+            },
+        },
     },
     {
         sequelize,

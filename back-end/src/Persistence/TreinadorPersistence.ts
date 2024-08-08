@@ -1,4 +1,3 @@
-import { throws } from 'assert';
 import { treinadorModel } from '../Models/TreinadorModel';
 import { treinadorType } from '../Types/TreinadorTypes';
 import { Transaction } from 'sequelize';

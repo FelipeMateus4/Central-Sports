@@ -7,6 +7,7 @@ import flash from 'express-flash';
 import { userTreinadorRoutes } from './Routes/UserTreinadorRoute';
 import { authRouter } from './Routes/AuthRoute';
 import { config } from 'dotenv';
+import { userAtletaRoutes } from './Routes/UserAtletaRoute';
 
 config();
 const app = express();
@@ -36,5 +37,6 @@ app.use(passport.session());
 
 app.use(authRouter);
 app.use(userTreinadorRoutes);
+app.use(userAtletaRoutes);
 
 export { app };

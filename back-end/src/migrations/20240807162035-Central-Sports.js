@@ -30,6 +30,34 @@ module.exports = {
                 defaultValue: Sequelize.NOW,
             },
         });
+        await queryInterface.createTable('Atletas', {
+            id: {
+                type: Sequelize.INTEGER,
+                primaryKey: true,
+                autoIncrement: true,
+                allowNull: false,
+            },
+            name: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            cpf: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            sport: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            createdAt: {
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.NOW,
+            },
+            updatedAt: {
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.NOW,
+            },
+        });
 
         await queryInterface.createTable('Users', {
             id: {
@@ -61,6 +89,15 @@ module.exports = {
                 onUpdate: 'CASCADE',
                 onDelete: 'SET NULL',
             },
+            atletaModelId: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'Atletas',
+                    key: 'id',
+                },
+                onUpdate: 'CASCADE',
+                onDelete: 'SET NULL',
+            },
             createdAt: {
                 type: Sequelize.DATE,
                 defaultValue: Sequelize.NOW,
@@ -75,5 +112,6 @@ module.exports = {
     down: async (queryInterface, Sequelize) => {
         await queryInterface.dropTable('Users');
         await queryInterface.dropTable('Treinadores');
+        await queryInterface.dropTable('Atletas');
     },
 };

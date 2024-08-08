@@ -19,4 +19,5 @@ const getTreinador = async (id: number, transaction: Transaction) => {
     }
 };
 
+const updateTreinador
 export default { createTreinador, getTreinador };

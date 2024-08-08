@@ -14,5 +14,6 @@
 
    - **Regra:** Os requisitos devem ser consistentes entre si, não podendo haver conflitos ou contradições. A consistência deve ser mantida tanto nos requisitos funcionais quanto nos não funcionais.
 
-3. **Completude**
-   - **Regra:** Todos os aspectos relevantes do sistema devem ser cobertos pelos requisitos. O documento de requisitos deve ser completo, sem lacunas que possam comprometer o desenvolvimento do sistema.
+3. **Rastreabilidade**
+
+   - **Regra**: Cada requisito deve ser rastreável, possuindo um identificador único que permita acompanhar seu desenvolvimento desde a especificação até a implementação e teste.

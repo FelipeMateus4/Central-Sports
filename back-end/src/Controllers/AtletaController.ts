@@ -4,6 +4,7 @@ import sequelize from '../Connections/Sequelize';
 import UserServices from '../Services/UserServices';
 import AtletaServices from '../Services/AtletaService';
 import { ensureAuthenticated } from '../Middlewares/IsAuthenticated';
+import { atletaType } from '../Types/AtletaType';
 
 const router = Router();
 
@@ -17,7 +18,7 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
         type,
     };
 
-    const atleta: any = {
+    const atleta: atletaType = {
         name: req.body.name,
         cpf: req.body.cpf,
         sport: req.body.sport,

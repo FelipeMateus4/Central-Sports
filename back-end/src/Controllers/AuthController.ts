@@ -7,14 +7,12 @@ router.post('/login', (req: Request, res: Response, next) => {
     passport.authenticate('local', (err: any, user: any, info: any) => {
         if (err) return next(err);
         if (!user) {
-            // Retorna um JSON com a URL de redirecionamento para falha
             return res.status(401).json({
                 message: info.message,
             });
         }
         req.logIn(user, (err) => {
             if (err) return next(err);
-            // Retorna um JSON com a URL de redirecionamento para sucesso
             return res.status(200).json({
                 message: 'login efetuado',
                 user: user,

@@ -19,7 +19,6 @@ const Login = () => {
             if (response.status === 200) {
                 console.log('logado');
             } else if (response.status === 401) {
-                const redirectUrl = response.data.redirectUrl;
                 console.log('nao logado');
             }
         } catch (error) {

@@ -41,4 +41,18 @@ const updateUser = async (updates: any, transaction: Transaction) => {
         throw error;
     }
 };
-export default { createUser, getUser, updateUser };
+
+const deleteUser = async (email: string, transaction: Transaction) => {
+    try {
+        const confirm = await userModel.destroy({ where: { email: email } });
+        if (confirm >= 1) {
+            return 'user deleted successful';
+        } else {
+            throw new Error('User not found');
+        }
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default { createUser, getUser, updateUser, deleteUser };

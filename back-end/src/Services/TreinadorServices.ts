@@ -27,4 +27,12 @@ const updateTreinadorServices = async (updates: any, transaction: Transaction) =
     }
 };
 
-export default { createTreinadorService, getTreinadorServices, updateTreinadorServices };
+const deleteUserServices = async (id: number, transaction: Transaction) => {
+    try {
+        return await TreinadorPersistence.deleteUser(id, transaction);
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default { createTreinadorService, getTreinadorServices, updateTreinadorServices, deleteUserServices };

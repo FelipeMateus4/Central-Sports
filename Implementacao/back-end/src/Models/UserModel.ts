@@ -9,6 +9,7 @@ class User extends Model {
     declare secret: string;
     declare type: string;
     declare treinadorModelId?: number;
+    declare atletaModelId?: number;
 
     public async comparePassword(enteredPassword: string): Promise<boolean> {
         return await bcrypt.compare(enteredPassword, this.password);

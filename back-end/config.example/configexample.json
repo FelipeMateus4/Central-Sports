@@ -1,23 +1,24 @@
 {
   "development": {
-    "username": "312312312312",
-    "password": "3131231231",
-    "database": "31312312312",
-    "host": "31231231231",
-    "dialect": "3131312312"
+    "username": "dev_user",
+    "password": "dev_password",
+    "database": "dev_database",
+    "host": "localhost",
+    "dialect": "postgres"
   },
   "test": {
-    "username": "3312312312",
-    "password": "f3131231231",
-    "database": "312312312312",
-    "host": "312312312312",
-    "dialect": "312312312312"
+    "username": "test_user",
+    "password": "test_password",
+    "database": "test_database",
+    "host": "localhost",
+    "dialect": "postgres"
   },
   "production": {
-    "username": "31231231231",
-    "password": "f31231312312",
-    "database": "31231231231",
-    "host": "312312312312",
-    "dialect": "312312312312"
-  }
+    "username": "prod_user",
+    "password": "prod_password",
+    "database": "prod_database",
+    "host": "prod_host",
+    "dialect": "postgres"
+  },
+  "important": "You should create a folder named 'config' and inside it, create a file named 'config.json'. After that, place this code in the file and edit it with your configurations."
 }

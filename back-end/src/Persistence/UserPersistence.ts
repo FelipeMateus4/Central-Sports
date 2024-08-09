@@ -1,3 +1,4 @@
+import { compare } from 'bcrypt';
 import { userModel } from '../Models/UserModel';
 import { userType } from '../Types/UserType';
 import { Transaction } from 'sequelize';
@@ -17,4 +18,27 @@ const getUser = async (email: string, transaction: Transaction) => {
         throw error;
     }
 };
-export default { createUser, getUser };
+
+const updateUser = async (updates: any, transaction: Transaction) => {
+    try {
+        const user: any = await userModel.findByPk(updates.id);
+        const userKeys = Object.keys(user.dataValues);
+        const updateKeys = Object.keys(updates);
+        const fields: string[] = [];
+        if (user) {
+            Object.keys(updates).forEach((key) => {
+                if (userKeys.includes(key) && updateKeys.includes(key)) {
+                    user[key] = updates[key] !== undefined ? updates[key] : user[key];
+                    fields.push(key);
+                }
+            });
+
+            return await user.save({ fields, transaction });
+        } else {
+            throw new Error('User not found');
+        }
+    } catch (error) {
+        throw error;
+    }
+};
+export default { createUser, getUser, updateUser };

@@ -54,13 +54,28 @@ router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: N
 
         await transaction.commit();
 
-        res.status(200).send({ message: 'Veja seus dados abaixo: ', data: { user, treinador } });
+        return res.status(200).send({ message: 'Veja seus dados abaixo: ', data: { user, treinador } });
     } catch (error) {
         await transaction.rollback();
         next(error);
     }
 });
 
-router.patch('/', ensureAuthenticated,)
+router.patch('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+    const updates = req.body;
+    const transaction = await sequelize.transaction();
+
+    try {
+        const updatedTreinador = await TreinadorServices.updateTreinadorServices(updates, transaction);
+        const updatedUser = await UserServices.updateUserServices(updates, transaction);
+        transaction.commit();
+
+        return res
+            .status(200)
+            .send({ message: 'Dados Atualizados com sucesso', data: { updatedTreinador, updatedUser } });
+    } catch (error) {
+        next(error);
+    }
+});
 
 export { router as treinadorController };

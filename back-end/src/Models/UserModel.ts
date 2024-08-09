@@ -94,12 +94,7 @@ User.init(
         schema: 'public',
         tableName: 'Users',
         hooks: {
-            beforeCreate: async (user: User) => {
-                if (user.password) {
-                    user.password = await bcrypt.hash(user.password, 10);
-                }
-            },
-            beforeUpdate: async (user: User) => {
+            beforeSave: async (user: User) => {
                 if (user.password) {
                     user.password = await bcrypt.hash(user.password, 10);
                 }

@@ -18,4 +18,12 @@ const getUserServices = async (email: string, transaction: Transaction) => {
     }
 };
 
-export default { createUserServices, getUserServices };
+const updateUserServices = async (updates: any, transaction: Transaction) => {
+    try {
+        return await UserPersistence.updateUser(updates, transaction);
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default { createUserServices, getUserServices, updateUserServices };

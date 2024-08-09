@@ -21,10 +21,23 @@ const getTreinador = async (id: number, transaction: Transaction) => {
 const updateTreinador = async (updates: any, transaction: Transaction) => {
     try {
         const treinador: any = await treinadorModel.findByPk(updates.treinadorModelId);
-        Object.keys(updates).forEach((key) => {
-            treinador[key] = updates[key] !== undefined ? updates[key] : treinador[key];
-        });
-        return await treinador.save({ Transaction });
+        console.log(updates.treinadorModelId);
+        const treinadorKeys = Object.keys(treinador.dataValues);
+        const updateskeys = Object.keys(updates);
+        const fields: string[] = [];
+
+        if (treinador) {
+            Object.keys(updates).forEach((key) => {
+                if (treinadorKeys.includes(key) && updateskeys.includes(key)) {
+                    treinador[key] = updates[key] !== undefined ? updates[key] : treinador[key];
+                    fields.push(key);
+                }
+            });
+
+            return await treinador.save({ fields, transaction });
+        } else {
+            throw new Error('User not found');
+        }
     } catch (error) {
         throw error;
     }

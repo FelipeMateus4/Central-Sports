@@ -1,0 +1,65 @@
+.page-section {
+    background: #21317a;
+    background-size: 200% 200%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    height: 100vh; /* Garante que a seção ocupe toda a altura da tela */
+}
+
+.login-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px; /* Reduz a largura máxima */
+    min-width: 100px;
+    min-height: 100px;
+    width: 500px;
+    height: 300px;
+    padding: 20px;
+    background-color: rgb(19, 25, 59);
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(30px);
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+}
+.campos {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    color: #529958;
+}
+.campos input {
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 0, 0);
+    height: 40px;
+}
+
+.formss-input {
+    width: 300px;
+}
+.text {
+    display: flex;
+    font-size: xx-large;
+    color: rgb(245, 245, 245);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.buttom-legal {
+    margin-left: 20px;
+}
+
+.legal {
+    width: 200px;
+}

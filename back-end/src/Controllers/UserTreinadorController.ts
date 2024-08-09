@@ -75,6 +75,7 @@ router.patch('/', ensureAuthenticated, async (req: Request, res: Response, next:
             .status(200)
             .send({ message: 'Dados Atualizados com sucesso', data: { updatedTreinador, updatedUser } });
     } catch (error) {
+        await transaction.rollback();
         next(error);
     }
 });
@@ -89,6 +90,7 @@ router.delete('/', ensureAuthenticated, async (req: Request, res: Response, next
         transaction.commit();
         return res.status(200).send({ message: result });
     } catch (error) {
+        await transaction.rollback();
         next(error);
     }
 });

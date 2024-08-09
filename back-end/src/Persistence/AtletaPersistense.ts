@@ -9,4 +9,36 @@ const createAtletaPersistense = async (atleta: any, transaction: Transaction) =>
     }
 };
 
-export default { createAtletaPersistense };
+const getAtleta = async (id: number, transaction: Transaction) => {
+    try {
+        return await atletaModel.findByPk(id, { transaction });
+    } catch (error) {
+        throw error;
+    }
+};
+
+const updateAtleta = async (updates: any, transaction: Transaction) => {
+    try {
+        const atleta: any = await atletaModel.findByPk(updates.atletaModelId);
+        const atletaKeys = Object.keys(atleta.dataValues);
+        const updateskeys = Object.keys(updates);
+        const fields: string[] = [];
+
+        if (atleta) {
+            Object.keys(updates).forEach((key) => {
+                if (atletaKeys.includes(key) && updateskeys.includes(key)) {
+                    atleta[key] = updates[key] !== undefined ? updates[key] : atleta[key];
+                    fields.push(key);
+                }
+            });
+
+            return await atleta.save({ fields, transaction });
+        } else {
+            throw new Error('User not found');
+        }
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default { createAtletaPersistense, getAtleta, updateAtleta };

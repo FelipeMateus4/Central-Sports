@@ -41,4 +41,17 @@ const updateAtleta = async (updates: any, transaction: Transaction) => {
     }
 };
 
-export default { createAtletaPersistense, getAtleta, updateAtleta };
+const deleteAtleta = async (id: number, transaction: Transaction) => {
+    try {
+        const confirm = await atletaModel.destroy({ where: { id: id } });
+        if (confirm >= 1) {
+            return 'user deleted successful';
+        } else {
+            throw new Error('User not found');
+        }
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default { createAtletaPersistense, getAtleta, updateAtleta, deleteAtleta };

@@ -21,7 +21,6 @@ const getTreinador = async (id: number, transaction: Transaction) => {
 const updateTreinador = async (updates: any, transaction: Transaction) => {
     try {
         const treinador: any = await treinadorModel.findByPk(updates.treinadorModelId);
-        console.log(updates.treinadorModelId);
         const treinadorKeys = Object.keys(treinador.dataValues);
         const updateskeys = Object.keys(updates);
         const fields: string[] = [];
@@ -42,4 +41,18 @@ const updateTreinador = async (updates: any, transaction: Transaction) => {
         throw error;
     }
 };
-export default { createTreinador, getTreinador, updateTreinador };
+
+const deleteUser = async (id: number, transaction: Transaction) => {
+    try {
+        const confirm = await treinadorModel.destroy({ where: { id: id } });
+        if (confirm >= 1) {
+            return 'user deleted successful';
+        } else {
+            throw new Error('User not found');
+        }
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default { createTreinador, getTreinador, updateTreinador, deleteUser };

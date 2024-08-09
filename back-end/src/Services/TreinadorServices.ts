@@ -19,4 +19,12 @@ const getTreinadorServices = async (id: number, transaction: Transaction) => {
     }
 };
 
-export default { createTreinadorService, getTreinadorServices };
+const updateTreinadorServices = async (updates: any, transaction: Transaction) => {
+    try {
+        return await TreinadorPersistence.updateTreinador(updates, transaction);
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default { createTreinadorService, getTreinadorServices, updateTreinadorServices };

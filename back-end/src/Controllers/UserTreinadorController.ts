@@ -61,4 +61,6 @@ router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: N
     }
 });
 
+router.patch('/', ensureAuthenticated,)
+
 export { router as treinadorController };

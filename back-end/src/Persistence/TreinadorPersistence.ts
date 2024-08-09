@@ -18,5 +18,15 @@ const getTreinador = async (id: number, transaction: Transaction) => {
     }
 };
 
-const updateTreinador
-export default { createTreinador, getTreinador };
+const updateTreinador = async (updates: any, transaction: Transaction) => {
+    try {
+        const treinador: any = await treinadorModel.findByPk(updates.treinadorModelId);
+        Object.keys(updates).forEach((key) => {
+            treinador[key] = updates[key] !== undefined ? updates[key] : treinador[key];
+        });
+        return await treinador.save({ Transaction });
+    } catch (error) {
+        throw error;
+    }
+};
+export default { createTreinador, getTreinador, updateTreinador };

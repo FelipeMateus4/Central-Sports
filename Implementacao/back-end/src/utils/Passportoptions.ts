@@ -1,6 +1,7 @@
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { userModel } from '../Models/UserModel';
+import speakeasy from 'speakeasy';
 
 passport.use(
     new LocalStrategy(
@@ -23,6 +24,13 @@ passport.use(
                         message: 'Email ou senha incorretos.',
                     });
                 }
+
+                const token = speakeasy.totp({
+                    secret: user.secret,
+                    encoding: 'base32',
+                });
+
+                console.log(token);
 
                 return done(null, user);
             } catch (error) {

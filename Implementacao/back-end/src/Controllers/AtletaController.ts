@@ -5,19 +5,21 @@ import UserServices from '../Services/UserServices';
 import AtletaServices from '../Services/AtletaService';
 import { ensureAuthenticated } from '../Middlewares/IsAuthenticated';
 import { atletaType } from '../Types/AtletaType';
+import speakeasy from 'speakeasy';
 
 const router = Router();
 
 router.post('/', async (req: Request, res: Response, next: NextFunction) => {
-    const { email, password, secret, type } = req.body;
+    const { email, password, type } = req.body;
+    const secret = speakeasy.generateSecret({ length: 20 });
 
     const user: userType = {
-        email,
-        password,
-        secret,
-        type,
+        email: email,
+        password: password,
+        secret: secret.base32,
+        session: false,
+        type: type,
     };
-
     const atleta: atletaType = {
         name: req.body.name,
         cpf: req.body.cpf,
@@ -35,7 +37,7 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
 
         await transaction.commit();
 
-        return res.status(201).send({ message: 'User criado com sucesso.', data: { user } });
+        return res.status(201).send({ message: 'User criado com sucesso.', data: { createdUser, createdAtleta } });
     } catch (error) {
         await transaction.rollback();
         next(error);

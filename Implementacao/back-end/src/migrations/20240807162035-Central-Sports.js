@@ -81,6 +81,10 @@ module.exports = {
             type: {
                 type: Sequelize.STRING,
             },
+            session: {
+                type: Sequelize.BOOLEAN,
+                defaultValue: false,
+            },
             treinadorModelId: {
                 type: Sequelize.INTEGER,
                 references: {

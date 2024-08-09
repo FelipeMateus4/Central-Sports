@@ -21,7 +21,7 @@ const getUserServices = async (email: string, transaction: Transaction) => {
     }
 };
 
-const updateUserServices = async (updates: any, transaction: Transaction) => {
+const updateUserServices = async (updates: any, transaction?: Transaction) => {
     try {
         return await UserPersistence.updateUser(updates, transaction);
     } catch (error) {

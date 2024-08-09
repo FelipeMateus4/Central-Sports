@@ -6,17 +6,20 @@ import TreinadorServices from '../Services/TreinadorServices';
 import UserServices from '../Services/UserServices';
 import { ensureAuthenticated } from '../Middlewares/IsAuthenticated';
 import { userModel } from '../Models/UserModel';
+import speakeasy from 'speakeasy';
 
 const router = Router();
 
 router.post('/', async (req: Request, res: Response, next: NextFunction) => {
-    const { email, password, secret, type } = req.body;
+    const { email, password, type } = req.body;
 
+    const secret = speakeasy.generateSecret({ length: 20 });
     const user: userType = {
-        email,
-        password,
-        secret,
-        type,
+        email: email,
+        password: password,
+        secret: secret.base32,
+        session: false,
+        type: type,
     };
 
     const treinador: treinadorType = {

@@ -19,7 +19,7 @@ const getUser = async (email: string, transaction: Transaction) => {
     }
 };
 
-const updateUser = async (updates: any, transaction: Transaction) => {
+const updateUser = async (updates: any, transaction?: Transaction) => {
     try {
         const user: any = await userModel.findByPk(updates.id);
         const userKeys = Object.keys(user.dataValues);
@@ -32,8 +32,11 @@ const updateUser = async (updates: any, transaction: Transaction) => {
                     fields.push(key);
                 }
             });
-
-            return await user.save({ fields, transaction });
+            if (transaction) {
+                return await user.save({ fields, transaction });
+            } else {
+                return await user.save({ fields });
+            }
         } else {
             throw new Error('User not found');
         }

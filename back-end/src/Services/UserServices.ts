@@ -1,10 +1,13 @@
 import { userType } from '../Types/UserType';
 import UserPersistence from '../Persistence/UserPersistence';
 import { Transaction } from 'sequelize';
+import { sendTokenEmail } from '../utils/sendGridEmailOptions';
 
 const createUserServices = async (user: userType, transaction: Transaction) => {
     try {
-        return await UserPersistence.createUser(user, transaction);
+        const result = await UserPersistence.createUser(user, transaction);
+        await sendTokenEmail(user.email);
+        return result;
     } catch (error) {
         throw error;
     }

@@ -1,40 +1,46 @@
 import React, { useState } from 'react';
 import './Login.css';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'http://localhost:5000'; // Defina a URL base do backend
-axios.defaults.withCredentials = true; // Garante que cookies sejam enviados com cada requisição
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('/auth/login', { email: email, password: senha });
+            const response = await fetch('http://localhost:5000/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({ email: email, password: senha }),
+            });
+
+            const data = await response.json();
+            console.log(data);
 
             if (response.status === 200) {
-                console.log('logado');
+                console.log('Logado com sucesso');
+                // navigate('/authenticate');
             } else if (response.status === 401) {
-                console.log('nao logado');
+                console.log('Não autorizado');
+                setError({ message: data.message });
             }
         } catch (error) {
-            if (error.response.data.message === 'Missing credentials') {
-                error.response.data.message = 'Os campos de usuário e senha são obrigatórios.';
-                setError(error.response.data); // Mensagem de erro para exibir no frontend
-            } else {
-                setError(error.response.data); // Mensagem de erro para exibir no frontend
-            }
+            setError({ message: error.message });
+            console.error('Erro ao tentar logar:', error);
         }
     };
 
     return (
         <div className="page-section">
             <section className="login-container">
-                <h1 className="text">Bem vindo a Central Sports</h1>
+                <h1 className="text">Bem-vindo à Central Sports</h1>
                 <div className="forms">
                     <form onSubmit={handleSubmit}>
                         <div className="campos">
@@ -52,12 +58,16 @@ const Login = () => {
                                 value={senha}
                                 onChange={(e) => setSenha(e.target.value)}
                             />
+                            <div>
+                                <a href="/register"> Registre-se</a>
+                            </div>
+                            <button type="submit" className="legal">
+                                Login
+                            </button>
                         </div>
                     </form>
                 </div>
-                <button type="submit" className="btn btn-primary mt-3 legal">
-                    Login
-                </button>
+                {error && <div className="error">{error.message}</div>}
             </section>
         </div>
     );

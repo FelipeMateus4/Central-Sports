@@ -62,14 +62,14 @@
 }
 
 .legal {
-    margin-left: 45px;
-    width: 200px;
-    color: #000000; /* Cor do texto */
-    font-size: 20px;
+    margin-left: 75px;
+    width: 150px;
+    color: #ffffff; /* Cor do texto */
+    font-size: 17px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #182fc4; /* Cor de fundo do botão */
     border: 2px solid #031a46; /* Borda do botão */
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px; /* Espaçamento interno */
     border-radius: 5px; /* Cantos arredondados */
     margin-top: 10px;
@@ -77,7 +77,7 @@
 
 .legal:hover {
     background-color: #002cf0; /* Cor de fundo ao passar o mouse */
-    color: #000000; /* Cor do texto ao passar o mouse */
+    color: #ffffff; /* Cor do texto ao passar o mouse */
 }
 .error {
     color: rgb(0, 0, 0);

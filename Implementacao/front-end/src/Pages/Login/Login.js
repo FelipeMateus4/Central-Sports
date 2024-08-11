@@ -60,7 +60,9 @@ const Login = () => {
                                 onChange={(e) => setSenha(e.target.value)}
                             />
                             <div>
-                                <a href="/register"> Registre-se</a>
+                                <a href="/register" className="text-decoration-none ">
+                                    Registre-se
+                                </a>
                             </div>
                             <button type="submit" className="legal">
                                 Login

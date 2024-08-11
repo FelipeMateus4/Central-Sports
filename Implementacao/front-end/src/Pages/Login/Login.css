@@ -20,7 +20,7 @@
     min-width: 100px;
     min-height: 100px;
     width: 500px;
-    height: 450px; /* Aumenta a altura para acomodar os botões sociais */
+    height: 400px; /* Aumenta a altura para acomodar os botões sociais */
     padding: 20px;
     background-color: rgb(19, 25, 59);
     border: 2px solid rgba(0, 0, 0, 0.3);

@@ -1,0 +1,28 @@
+.page-section-register {
+    background: #21317a;
+    background-size: 200% 200%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.register-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 600px; /* Aumenta a altura para acomodar os botões sociais */
+    padding: 20px;
+    background-color: rgb(19, 25, 59);
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(30px);
+}
+.text-middle {
+}

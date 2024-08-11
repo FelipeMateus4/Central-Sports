@@ -20,7 +20,7 @@
     min-width: 100px;
     min-height: 100px;
     width: 500px;
-    height: 400px; /* Aumenta a altura para acomodar os botões sociais */
+    height: 416px; /* Aumenta a altura para acomodar os botões sociais */
     padding: 20px;
     background-color: rgb(19, 25, 59);
     border: 2px solid rgba(0, 0, 0, 0.3);
@@ -90,8 +90,9 @@
 }
 
 .line {
+    display: flex;
     width: 110%;
-    height: 1px;
+    min-height: 1px;
     background-color: #000000;
     margin: 20px 0;
 }
@@ -103,4 +104,30 @@
     color: white;
     cursor: pointer;
     font-size: 14px;
+}
+
+.line2,
+.line3 {
+    flex: 1;
+    height: 2px;
+    background-color: #000000;
+}
+
+.container-bottom {
+    display: flex;
+    height: 2px;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+.text-middle {
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+    justify-content: center;
+    font-size: medium;
+}
+
+.regoster {
+    margin-left: 215px;
 }

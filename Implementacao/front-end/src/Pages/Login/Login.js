@@ -42,6 +42,7 @@ const Login = () => {
             <section className="login-container">
                 <h1 className="text">Bem-vindo à Central Sports</h1>
                 <div className="line"></div>
+                {error && <div className="error">{error.message}</div>}
                 <div className="forms">
                     <form onSubmit={handleSubmit}>
                         <div className="campos">
@@ -60,7 +61,7 @@ const Login = () => {
                                 onChange={(e) => setSenha(e.target.value)}
                             />
                             <div>
-                                <a href="/register" className="text-decoration-none ">
+                                <a href="/register" className="text-decoration-none ml-2 regoster">
                                     Registre-se
                                 </a>
                             </div>
@@ -70,7 +71,13 @@ const Login = () => {
                         </div>
                     </form>
                 </div>
-                {error && <div className="error">{error.message}</div>}
+                <div className="container-bottom">
+                    <div className="line2"></div>
+                    <a className="text-middle text-decoration-none ml-2" href="/esqueci">
+                        Esqueceu a senha?
+                    </a>
+                    <div className="line3"></div>
+                </div>
             </section>
         </div>
     );

@@ -20,7 +20,7 @@
     min-width: 100px;
     min-height: 100px;
     width: 500px;
-    height: 350px;
+    height: 450px; /* Aumenta a altura para acomodar os botões sociais */
     padding: 20px;
     background-color: rgb(19, 25, 59);
     border: 2px solid rgba(0, 0, 0, 0.3);
@@ -79,6 +79,7 @@
     background-color: #002cf0; /* Cor de fundo ao passar o mouse */
     color: #ffffff; /* Cor do texto ao passar o mouse */
 }
+
 .error {
     color: rgb(0, 0, 0);
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -86,4 +87,20 @@
     background-color: rgb(228, 144, 158);
     border-radius: 10px;
     border: 1px solid red;
+}
+
+.line {
+    width: 110%;
+    height: 1px;
+    background-color: #000000;
+    margin: 20px 0;
+}
+
+.social-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
 }

@@ -41,6 +41,7 @@ const Login = () => {
         <div className="page-section">
             <section className="login-container">
                 <h1 className="text">Bem-vindo à Central Sports</h1>
+                <div className="line"></div>
                 <div className="forms">
                     <form onSubmit={handleSubmit}>
                         <div className="campos">

@@ -16,7 +16,7 @@ const RegisterTreinador = () => {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/treinador/register', {
+            const response = await fetch('http://localhost:5000/treinador', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ const RegisterTreinador = () => {
                     cpf: cpf,
                     graduation: graduation,
                     password: password,
-                    confirmPassword: confirmPassword,
+                    type: confirmPassword,
                 }),
             });
 
@@ -35,9 +35,9 @@ const RegisterTreinador = () => {
 
             if (response.status === 201) {
                 console.log('Registrado com sucesso');
-                navigate('/login');
+                navigate('/');
             } else if (response.status === 400) {
-                console.log('Erro ao registrar');
+                setError({ message: data.message });
             }
         } catch (error) {
             setError({ message: error.message });
@@ -49,6 +49,7 @@ const RegisterTreinador = () => {
         <div className="page-section-register">
             <div className="register-container">
                 <h2 className="title">Register</h2>
+                {error && <div className="error">{error.message}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="name"></label>

@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "dev_user",
-    "password": "dev_password",
-    "database": "dev_database",
+    "username": "admin",
+    "password": "admin",
+    "database": "sportsDatabase",
     "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
-    "username": "test_user",
-    "password": "test_password",
-    "database": "test_database",
+    "username": "admin",
+    "password": "admin",
+    "database": "sportsDatabasee",
     "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
-    "username": "prod_user",
-    "password": "prod_password",
-    "database": "prod_database",
-    "host": "prod_host",
+    "username": "admin",
+    "password": "admin",
+    "database": "sportsDatabase",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "important": "You should create a folder named 'config' and inside it, create a file named 'config.json'. After that, place this code in the file and edit it with your configurations."

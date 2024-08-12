@@ -2,23 +2,23 @@ import { Transaction } from 'sequelize';
 import { torneioModel } from '../Models/TorneioModel';
 import { torneioType } from '../Types/TorneioType';
 
-const createTorneio = async (torneio: any, transaction: Transaction) => {
+const createTorneio = async (torneio: any) => {
     try {
-        return await torneioModel.create(torneio, { transaction });
+        return await torneioModel.create(torneio);
     } catch (error) {
         throw error;
     }
 };
 
-const getTorneio = async (id: number, transaction: Transaction) => {
+const getTorneio = async (id: number) => {
     try {
-        return await torneioModel.findByPk(id, { transaction });
+        return await torneioModel.findByPk(id);
     } catch (error) {
         throw error;
     }
 };
 
-const updateTorneio = async (updates: any, transaction: Transaction) => {
+const updateTorneio = async (updates: any) => {
     try {
         const torneio: any = await torneioModel.findByPk(updates.torneioModelID);
         const torneioKeys = Object.keys(torneio.dataValues);
@@ -35,13 +35,13 @@ const updateTorneio = async (updates: any, transaction: Transaction) => {
             throw new Error('Torneio not found');
         }
 
-        return await torneio.save({ field, transaction });
+        return await torneio.save({ field });
     } catch (error) {
         throw error;
     }
 };
 
-const deleteTorneio = async (id: number, transaction: Transaction) => {
+const deleteTorneio = async (id: number) => {
     try {
         const confirm = await torneioModel.destroy({ where: { id: id } });
         if (confirm >= 1) {

@@ -28,16 +28,11 @@ router.post('/', ensureAuthenticated, async (req: Request, res: Response, next: 
         data: req.body.data,
     };
 
-    const transaction = await sequelize.transaction();
-
     try {
-        const createdTorneio: any = await TorneioServices.createTorneioService(torneio, transaction);
-
-        await transaction.commit();
+        const createdTorneio: any = await TorneioServices.createTorneioService(torneio);
 
         return res.status(201).send({ message: 'Torneio criado com sucesso. ', data: { createdTorneio } });
     } catch (error) {
-        await transaction.rollback();
         next(error);
     }
 });
@@ -47,7 +42,7 @@ router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: N
     const transaction: any = await sequelize.transaction();
 
     try {
-        const torneio: any = await TorneioServices.getTorneioService(id, transaction);
+        const torneio: any = await TorneioServices.getTorneioService(id);
 
         await transaction.commit();
 
@@ -60,14 +55,11 @@ router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: N
 
 router.patch('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
     const keys = req.body;
-    const transaction = await sequelize.transaction();
 
     try {
-        const torneio: any = await TorneioServices.updateTorneioService(keys, transaction);
-        await transaction.commit();
+        const torneio: any = await TorneioServices.updateTorneioService(keys);
         return res.status(200).send({ message: 'Veja abaixo os dados atualizados do torneio', data: { torneio } });
     } catch (error) {
-        await transaction.rollback();
         next(error);
     }
 });

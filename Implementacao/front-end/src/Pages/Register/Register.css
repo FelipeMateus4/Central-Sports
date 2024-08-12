@@ -15,8 +15,8 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    width: 500px;
-    height: 600px; /* Aumenta a altura para acomodar os botões sociais */
+    width: 450px;
+    height: 550px; /* Aumenta a altura para acomodar os botões sociais */
     padding: 20px;
     background-color: rgb(19, 25, 59);
     border: 2px solid rgba(0, 0, 0, 0.3);
@@ -24,5 +24,45 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(30px);
 }
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-group input {
+    width: 300px;
+    display: flex;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 0, 0);
+    height: 40px;
+}
+
+.form-group label {
+    display: flex;
+    font-size: 15px;
+    color: rgb(245, 245, 245);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title {
+    margin-bottom: 35px;
+    display: flex;
+    font-size: 40px;
+    color: rgb(245, 245, 245);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.btn-register {
+    display: flex;
+    margin-left: 37%;
+    margin-top: 20px;
+    width: 100px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+}
+
 .text-middle {
 }

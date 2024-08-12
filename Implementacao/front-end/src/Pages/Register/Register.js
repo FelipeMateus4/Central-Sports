@@ -16,7 +16,7 @@ const RegisterTreinador = () => {
         event.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/auth/register', {
+            const response = await fetch('http://localhost:5000/treinador/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,15 +48,23 @@ const RegisterTreinador = () => {
     return (
         <div className="page-section-register">
             <div className="register-container">
-                <h2>Register</h2>
+                <h2 className="title">Register</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
-                        <label htmlFor="name">name:</label>
-                        <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
+                        <label htmlFor="name"></label>
+                        <input
+                            placeholder="Name"
+                            type="text"
+                            id="name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="email">Email:</label>
+                        <label htmlFor="email"></label>
                         <input
+                            placeholder="Email"
                             type="email"
                             id="email"
                             value={email}
@@ -65,12 +73,20 @@ const RegisterTreinador = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="cpf">CPF:</label>
-                        <input type="text" id="cpf" value={cpf} onChange={(e) => setCpf(e.target.value)} required />
+                        <label htmlFor="cpf"></label>
+                        <input
+                            placeholder="CPF"
+                            type="text"
+                            id="cpf"
+                            value={cpf}
+                            onChange={(e) => setCpf(e.target.value)}
+                            required
+                        />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="graduation">Graduation:</label>
+                        <label htmlFor="graduation"></label>
                         <input
+                            placeholder="Graduation"
                             type="text"
                             id="graduation"
                             value={graduation}
@@ -79,8 +95,9 @@ const RegisterTreinador = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="password">Password:</label>
+                        <label htmlFor="password"></label>
                         <input
+                            placeholder="Password"
                             type="password"
                             id="password"
                             value={password}
@@ -89,8 +106,9 @@ const RegisterTreinador = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="confirmPassword">Confirm Password:</label>
+                        <label htmlFor="confirmPassword"></label>
                         <input
+                            placeholder="Confirm Password"
                             type="password"
                             id="confirmPassword"
                             value={confirmPassword}
@@ -102,10 +120,6 @@ const RegisterTreinador = () => {
                         Register
                     </button>
                 </form>
-                <div className="social-buttons">
-                    <button className="btn-social">Sign up with Google</button>
-                    <button className="btn-social">Sign up with Facebook</button>
-                </div>
             </div>
         </div>
     );

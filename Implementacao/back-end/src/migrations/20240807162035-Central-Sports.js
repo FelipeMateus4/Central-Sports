@@ -112,6 +112,45 @@ module.exports = {
                 defaultValue: Sequelize.NOW,
             },
         });
+
+        await queryInterface.createTable('Torneios', {
+            id: {
+                type: Sequelize.INTEGER,
+                primaryKey: true,
+                autoIncrement: true,
+                allowNull: false,
+            },
+            name: {
+                type: Sequelize.STRING,
+                allowNull: false,
+                unique: true,
+            },
+            descricao: {
+                type: Sequelize.STRING,
+                allowNull: false,
+            },
+            qtdVagas: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+            },
+            esporte: {
+                type: Sequelize.STRING,
+                esporte: Sequelize.STRING,
+                allowNull: false,
+            },
+            data: {
+                type: Sequelize.DATE,
+                allowNull: false,
+            },
+            createdAt: {
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.NOW,
+            },
+            updatedAt: {
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.NOW,
+            },
+        });
     },
 
     down: async (queryInterface, Sequelize) => {

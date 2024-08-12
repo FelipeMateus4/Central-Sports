@@ -8,6 +8,7 @@ import { userTreinadorRoutes } from './Routes/UserTreinadorRoute';
 import { authRouter } from './Routes/AuthRoute';
 import { config } from 'dotenv';
 import { userAtletaRoutes } from './Routes/UserAtletaRoute';
+import { torneioRoutes } from './Routes/TorneioRoute';
 
 config();
 const app = express();
@@ -45,5 +46,6 @@ app.use(
 app.use(authRouter);
 app.use(userTreinadorRoutes);
 app.use(userAtletaRoutes);
+app.use(torneioRoutes);
 
 export { app };

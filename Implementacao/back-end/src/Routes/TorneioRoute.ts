@@ -6,4 +6,4 @@ const router = Router();
 
 router.use('/torneio', torneioController, errorHandler);
 
-export { router as userTreinadorRoutes };
+export { router as torneioRoutes };

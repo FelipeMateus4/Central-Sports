@@ -20,60 +20,46 @@ router.post('/', ensureAuthenticated, async (req: Request, res: Response, next: 
         data: req.body.data,
     };
 
-    const transaction = await sequelize.transaction();
-
     try {
         const createdTorneio: any = await TorneioServices.createTorneioService(torneio);
 
-        await transaction.commit();
-
         return res.status(201).send({ message: 'Torneio criado com sucesso. ', data: { createdTorneio } });
     } catch (error) {
-        await transaction.rollback();
         next(error);
     }
 });
 
 router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
     const id = req.body.id;
-    const transaction: any = await sequelize.transaction();
 
     try {
         const torneio: any = await TorneioServices.getTorneioService(id);
 
-        await transaction.commit();
-
         res.status(200).send({ message: 'Veja abaixo os dados do torneio: ', data: { torneio } });
     } catch (error) {
-        await transaction.rollback();
         next(error);
     }
 });
 
 router.patch('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
     const keys = req.body;
-    const transaction = await sequelize.transaction();
 
     try {
         const torneio: any = await TorneioServices.updateTorneioService(keys);
-        await transaction.commit();
         return res.status(200).send({ message: 'Veja abaixo os dados atualizados do torneio', data: { torneio } });
     } catch (error) {
-        await transaction.rollback();
         next(error);
     }
 });
 
 router.delete('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
     const id = req.body.id;
-    const transaction = await sequelize.transaction();
 
     try {
         const result: any = await TorneioServices.deleteTorneioService(id);
-        transaction.commit();
+
         return res.status(200).send({ message: result });
     } catch (error) {
-        await transaction.rollback();
         next(error);
     }
 });

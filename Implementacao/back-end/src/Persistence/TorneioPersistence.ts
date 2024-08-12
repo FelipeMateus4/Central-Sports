@@ -20,8 +20,7 @@ const getTorneio = async (id: number) => {
 
 const updateTorneio = async (updates: any) => {
     try {
-        const torneio: any = await torneioModel.findByPk(updates.torneioModelID);
-        const torneioKeys = Object.keys(torneio.dataValues);
+        const torneio: any = await torneioModel.findByPk(updates.id);
         const updateKeys = Object.keys(updates);
         const field: string[] = [];
         if (torneio) {

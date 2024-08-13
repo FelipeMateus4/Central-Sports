@@ -118,7 +118,7 @@ const RegisterTreinador = () => {
                         />
                     </div>
                     <button type="submit" className="btn-register">
-                        Register
+                        Registrar
                     </button>
                 </form>
             </div>

@@ -26,11 +26,11 @@ const Footer = () => {
                     <h4>Siga a Centra Sports</h4>
                     <ul className="social-media">
                         <li>
-                            <a href="/account/verify/resend" className="text-decoration-none ml-2">
+                            <a href="https://www.instagram.com/filipedeschamps/" className="text-decoration-none ml-2">
                                 Facebook
                             </a>
                         </li>
-                        <li>Twitter</li>
+                        <li>X</li>
                         <li>
                             <a href="https://www.instagram.com/filipedeschamps/" className="text-decoration-none ml-2">
                                 Instagram

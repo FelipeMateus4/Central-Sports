@@ -55,14 +55,20 @@
 }
 
 .btn-register {
-    display: flex;
-    margin-left: 37%;
-    margin-top: 20px;
-    width: 100px;
-    height: 40px;
-    align-items: center;
-    justify-content: center;
+    margin-left: 75px;
+    width: 150px;
+    color: #ffffff; /* Cor do texto */
+    font-size: 17px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #182fc4; /* Cor de fundo do botão */
+    border: 2px solid #031a46; /* Borda do botão */
+    border-radius: 10px;
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 10px; /* Cantos arredondados */
+    margin-top: 50px;
 }
 
-.text-middle {
+.btn-register:hover {
+    background-color: #002cf0; /* Cor de fundo ao passar o mouse */
+    color: #ffffff; /* Cor do texto ao passar o mouse */
 }

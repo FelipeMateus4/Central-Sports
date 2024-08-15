@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContext';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [error, setError] = useState(null);
+    const { loginAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -25,6 +27,7 @@ const Login = () => {
             console.log(data);
 
             if (response.status === 200) {
+                loginAuth(data.user);
                 console.log('Logado com sucesso');
                 // navigate('/authenticate');
             } else if (response.status === 401) {

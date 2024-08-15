@@ -1,15 +1,17 @@
-// src/App.js
 import React from 'react';
 import Footer from './Components/Footer/Footer';
 import { Outlet } from 'react-router';
 import Header from './Components/Header/Header';
+import { AuthProvider } from './Pages/Context/AuthContext';
 
 function App() {
     return (
         <>
-            <Header />
-            <Outlet />
-            <Footer />
+            <AuthProvider>
+                <Header />
+                <Outlet />
+                <Footer />
+            </AuthProvider>
         </>
     );
 }

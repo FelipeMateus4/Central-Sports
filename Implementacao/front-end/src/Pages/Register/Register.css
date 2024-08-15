@@ -2,6 +2,8 @@
     background: #21317a;
     background-size: 200% 200%;
     display: flex;
+    background: linear-gradient(120deg, #041624, #21317a);
+    animation: gradientBG 9s linear infinite;
     flex-direction: column;
     align-items: center;
     justify-content: center;

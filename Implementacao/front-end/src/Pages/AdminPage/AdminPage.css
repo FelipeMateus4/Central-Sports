@@ -1,0 +1,49 @@
+.page-section-admin {
+    background: url('../../Assets/esporte2.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    height: 100vh; /* Garante que a seção ocupe toda a altura da tela */
+}
+
+.admin-page {
+    text-align: center;
+    color: white;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    min-height: 100px;
+    height: 320px;
+    width: 320px;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo preto semi-transparente para destacar os botões */
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    border: 2px solid #1606a7; /* Borda dourada para um toque de campeão */
+}
+
+.admin-button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 35px;
+    margin-top: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #000000; /* Fundo dourado para simbolizar vitória */
+    color: #e6e6e6; /* Texto escuro para contraste */
+    transition: background-color 0.3s;
+}
+
+.admin-button:hover {
+    background-color: #363634; /* Um laranja mais vibrante no hover */
+}

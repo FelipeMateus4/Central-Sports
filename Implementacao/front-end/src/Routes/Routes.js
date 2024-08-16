@@ -3,6 +3,7 @@ import App from '../App';
 import Login from '../Pages/Login/Login';
 import RegisterTreinador from '../Pages/Register/Register';
 import { AdminPage } from '../Pages/AdminPage/AdminPage';
+import TournamentsPage from '../Pages/Torneio/Torneio';
 
 export const router = createBrowserRouter([
     {
@@ -12,6 +13,7 @@ export const router = createBrowserRouter([
             { path: '', element: <Login /> },
             { path: '/treinador/register', element: <RegisterTreinador /> },
             { path: '/admin/', element: <AdminPage /> },
+            { path: '/torneio/', element: <TournamentsPage /> },
         ],
     },
 ]);

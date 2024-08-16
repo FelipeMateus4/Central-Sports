@@ -12,9 +12,9 @@ const createTorneioService = async (torneio: any) => {
     }
 };
 
-const getTorneioService = async (id: number) => {
+const getTorneioService = async () => {
     try {
-        return await TorneioPersistence.getTorneio(id);
+        return await TorneioPersistence.getTorneio();
     } catch (error) {
         throw error;
     }

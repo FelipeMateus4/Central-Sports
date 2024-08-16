@@ -30,10 +30,8 @@ router.post('/', ensureAuthenticated, async (req: Request, res: Response, next: 
 });
 
 router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
-    const id = req.body.id;
-
     try {
-        const torneio: any = await TorneioServices.getTorneioService(id);
+        const torneio: any = await TorneioServices.getTorneioService();
 
         res.status(200).send({ message: 'Veja abaixo os dados do torneio: ', data: { torneio } });
     } catch (error) {

@@ -10,9 +10,9 @@ const createTorneio = async (torneio: any) => {
     }
 };
 
-const getTorneio = async (id: number) => {
+const getTorneio = async () => {
     try {
-        return await torneioModel.findByPk(id);
+        return await torneioModel.findAll();
     } catch (error) {
         throw error;
     }

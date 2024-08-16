@@ -29,6 +29,17 @@ router.post('/', ensureAuthenticated, async (req: Request, res: Response, next: 
     }
 });
 
+router.get('/:id', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const id: number = parseInt(req.params.id, 10);
+
+        const torneio = await TorneioServices.getTorneioByIdService(id);
+
+        return res.status(200).send({ message: 'Veja abaixo os dados do torneio: ', data: { torneio } });
+    } catch (error) {
+        next(error);
+    }
+});
 router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
     try {
         const torneio: any = await TorneioServices.getTorneioService();
@@ -50,8 +61,8 @@ router.patch('/', ensureAuthenticated, async (req: Request, res: Response, next:
     }
 });
 
-router.delete('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
-    const id = req.body.id;
+router.delete('/:id', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+    const id: number = parseInt(req.params.id, 10); // Convert id to a number
 
     try {
         const result: any = await TorneioServices.deleteTorneioService(id);

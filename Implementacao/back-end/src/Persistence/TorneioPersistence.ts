@@ -18,6 +18,14 @@ const getTorneio = async () => {
     }
 };
 
+const getTorneioById = async (id: number) => {
+    try {
+        return await torneioModel.findByPk(id);
+    } catch (error) {
+        throw error;
+    }
+};
+
 const updateTorneio = async (updates: any) => {
     try {
         const torneio: any = await torneioModel.findByPk(updates.id);
@@ -53,4 +61,4 @@ const deleteTorneio = async (id: number) => {
     }
 };
 
-export default { createTorneio, getTorneio, updateTorneio, deleteTorneio };
+export default { createTorneio, getTorneio, updateTorneio, deleteTorneio, getTorneioById };

@@ -109,5 +109,5 @@
     "moduleResolution": "node",
     "types": ["jest", "node"]
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "../front-end/src/Pages/EditTorneio"]
 }

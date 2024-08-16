@@ -20,6 +20,13 @@ const getTorneioService = async () => {
     }
 };
 
+const getTorneioByIdService = async (id: number) => {
+    try {
+        return await TorneioPersistence.getTorneioById(id);
+    } catch (error) {
+        throw error;
+    }
+};
 const updateTorneioService = async (updates: any) => {
     try {
         return await TorneioPersistence.updateTorneio(updates);
@@ -36,4 +43,10 @@ const deleteTorneioService = async (id: number) => {
     }
 };
 
-export default { createTorneioService, getTorneioService, updateTorneioService, deleteTorneioService };
+export default {
+    createTorneioService,
+    getTorneioService,
+    updateTorneioService,
+    deleteTorneioService,
+    getTorneioByIdService,
+};

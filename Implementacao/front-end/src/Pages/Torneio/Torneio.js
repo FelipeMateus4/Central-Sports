@@ -3,6 +3,51 @@ import { Link } from 'react-router-dom';
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import './Torneio.css';
 
+function TournamentItem({ tournament, onDelete }) {
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const toggleExpand = () => {
+        setIsExpanded(!isExpanded);
+    };
+
+    return (
+        <li className="tournament-item">
+            <div className="tournament-header">
+                <span>{tournament.name}</span>
+                <div className="tournament-actions">
+                    <button onClick={toggleExpand} className="btn-visualizar">
+                        Visualizar
+                    </button>
+                    <button className="tournament-button" onClick={() => onDelete(tournament.id)}>
+                        <FaTrash /> Excluir
+                    </button>
+                    <Link to={`/edit-tournament/${tournament.id}`} className="tournament-link">
+                        <button className="tournament-button">
+                            <FaEdit /> Editar
+                        </button>
+                    </Link>
+                </div>
+            </div>
+            {isExpanded && (
+                <div className="tournament-details">
+                    <p>
+                        <strong>Descrição:</strong> {tournament.descricao}
+                    </p>
+                    <p>
+                        <strong>Esporte:</strong> {tournament.esporte}
+                    </p>
+                    <p>
+                        <strong>Quantidade de Vagas:</strong> {tournament.qtdVagas}
+                    </p>
+                    <p>
+                        <strong>Data:</strong> {tournament.data}
+                    </p>
+                </div>
+            )}
+        </li>
+    );
+}
+
 function TournamentsPage() {
     const [tournaments, setTournaments] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -25,7 +70,6 @@ function TournamentsPage() {
 
                 const data = await response.json();
 
-                // Acesse o array correto dentro da estrutura de resposta
                 if (data && Array.isArray(data.data.torneio)) {
                     setTournaments(data.data.torneio);
                 } else {
@@ -76,19 +120,7 @@ function TournamentsPage() {
                 <h1 className="tournaments-title">Lista de Torneios</h1>
                 <ul className="tournaments-list">
                     {tournaments.map((tournament) => (
-                        <li key={tournament.id} className="tournament-item">
-                            {tournament.name}
-                            <div className="tournament-actions">
-                                <button className="tournament-button" onClick={() => handleDelete(tournament.id)}>
-                                    <FaTrash /> Excluir
-                                </button>
-                                <Link to={`/edit-tournament/${tournament.id}`} className="tournament-link">
-                                    <button className="tournament-button">
-                                        <FaEdit /> Editar
-                                    </button>
-                                </Link>
-                            </div>
-                        </li>
+                        <TournamentItem key={tournament.id} tournament={tournament} onDelete={handleDelete} />
                     ))}
                 </ul>
 

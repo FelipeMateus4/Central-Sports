@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import './AdminPage.css'; // Certifique-se de criar este arquivo para os estilos
 
 export const AdminPage = () => {
-    const { user, logout } = useContext(AuthContext);
+    const { logout } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleLogout = () => {

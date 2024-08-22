@@ -6,6 +6,7 @@ import { AdminPage } from '../Pages/AdminPage/AdminPage';
 import TournamentsPage from '../Pages/Torneio/Torneio';
 import RegisterTorneio from '../Pages/RegistroTorneio/RegisterTorneio';
 import EditTorneio from '../Pages/EditTorneio/EditTorneio';
+import DeletarTorneio from '../Pages/DeletarTorneio/DeletarTorneio'; // Importe o componente DeletarTorneio
 
 export const router = createBrowserRouter([
     {
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
             { path: '/torneio/', element: <TournamentsPage /> },
             { path: '/create-tournament', element: <RegisterTorneio /> },
             { path: '/edit-tournament/:id', element: <EditTorneio /> },
+            { path: '/delete-tournament/:id', element: <DeletarTorneio /> }, // Adicione esta linha
         ],
     },
 ]);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Adicionando useNavigate
 import { FaTrash, FaEdit } from 'react-icons/fa';
 import './Torneio.css';
 
@@ -52,6 +52,7 @@ function TournamentsPage() {
     const [tournaments, setTournaments] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate(); // Adicionar hook useNavigate
 
     useEffect(() => {
         const fetchTournaments = async () => {
@@ -87,23 +88,8 @@ function TournamentsPage() {
     }, []);
 
     const handleDelete = async (id) => {
-        try {
-            const response = await fetch(`http://localhost:5000/torneio/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                credentials: 'include',
-            });
-
-            if (!response.ok) {
-                throw new Error('Erro ao deletar torneio');
-            }
-
-            setTournaments(tournaments.filter((tournament) => tournament.id !== id));
-        } catch (error) {
-            console.error('Erro ao deletar torneio:', error);
-        }
+        // Redirecionar para a página de confirmação
+        navigate(`/delete-tournament/${id}`);
     };
 
     if (loading) {

@@ -1,0 +1,69 @@
+.page-section-delete {
+    background: url('../../Assets/esporte2.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 20px;
+    margin: 0;
+    height: 100vh; /* Garante que a altura ocupe toda a tela */
+}
+
+.delete-container {
+    background-color: #f4f4f467;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para o título */
+.delete-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+/* Estilo para o parágrafo */
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Estilo para os botões */
+.delete-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Estilo para o botão de confirmação */
+.confirm-button {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+.confirm-button:hover {
+    background-color: #c9302c;
+}
+
+/* Estilo para o botão de negação */
+.cancel-button {
+    background-color: #5bc0de;
+    color: #fff;
+}
+
+.cancel-button:hover {
+    background-color: #31b0d5;
+}

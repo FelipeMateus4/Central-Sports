@@ -6,7 +6,7 @@ import { sendTokenEmail } from '../utils/sendGridEmailOptions';
 const createUserServices = async (user: userType, transaction: Transaction) => {
     try {
         const result = await UserPersistence.createUser(user, transaction);
-        await sendTokenEmail(user.email);
+        //await sendTokenEmail(user.email);
         return result;
     } catch (error) {
         throw error;

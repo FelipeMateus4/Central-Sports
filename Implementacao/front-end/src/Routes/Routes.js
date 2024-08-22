@@ -10,6 +10,7 @@ import ProtectedRoute from './ProtectedRoute';
 import DeletarTorneio from '../Pages/DeletarTorneio/DeletarTorneio';
 import Authenticate from '../Pages/Authenticate/Authenticate';
 import SelecaoUsuario from '../Pages/SelecaoUsuario/SelecaoUsuario';
+import RegisterAtleta from '../Pages/RegistroAtleta/RegisterAtleta';
 
 export const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
         children: [
             { path: '', element: <Login /> },
             { path: 'treinador/register', element: <RegisterTreinador /> },
+            {
+                path: 'atleta/register',
+                element: <RegisterAtleta />,
+            },
             {
                 path: 'admin',
                 element: (

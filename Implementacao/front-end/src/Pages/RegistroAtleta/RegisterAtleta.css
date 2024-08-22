@@ -1,0 +1,76 @@
+.page-atleta-section-register {
+    background: #21317a;
+    background-size: 200% 200%;
+    display: flex;
+    background: linear-gradient(120deg, #041624, #21317a);
+    animation: gradientBG 9s linear infinite;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.register-atleta-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: 550px; /* Aumenta a altura para acomodar os botões sociais */
+    padding: 20px;
+    background-color: rgb(19, 25, 59);
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(30px);
+}
+
+.atleta-form-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.atleta-form-group input {
+    width: 300px;
+    display: flex;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 0, 0);
+    height: 40px;
+}
+
+.atleta-form-group label {
+    display: flex;
+    font-size: 15px;
+    color: rgb(245, 245, 245);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title {
+    margin-bottom: 35px;
+    display: flex;
+    font-size: 40px;
+    color: rgb(245, 245, 245);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.atleta-btn-register {
+    margin-left: 75px;
+    width: 150px;
+    color: #ffffff; /* Cor do texto */
+    font-size: 17px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #182fc4; /* Cor de fundo do botão */
+    border: 2px solid #031a46; /* Borda do botão */
+    border-radius: 10px;
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 10px; /* Cantos arredondados */
+    margin-top: 50px;
+}
+
+.atleta-btn-register:hover {
+    background-color: #002cf0; /* Cor de fundo ao passar o mouse */
+    color: #ffffff; /* Cor do texto ao passar o mouse */
+}

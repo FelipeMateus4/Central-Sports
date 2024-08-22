@@ -7,7 +7,8 @@ import TournamentsPage from '../Pages/Torneio/Torneio';
 import RegisterTorneio from '../Pages/RegistroTorneio/RegisterTorneio';
 import EditTorneio from '../Pages/EditTorneio/EditTorneio';
 import ProtectedRoute from './ProtectedRoute';
-import DeletarTorneio from '../Pages/DeletarTorneio/DeletarTorneio'; // Importe o componente DeletarTorneio
+import DeletarTorneio from '../Pages/DeletarTorneio/DeletarTorneio';
+import Authenticate from '../Pages/Authenticate/Authenticate';
 
 export const router = createBrowserRouter([
     {
@@ -15,31 +16,54 @@ export const router = createBrowserRouter([
         element: <App />,
         children: [
             { path: '', element: <Login /> },
-            { path: '/treinador/register', element: <RegisterTreinador /> },
+            { path: 'treinador/register', element: <RegisterTreinador /> },
             {
-                path: '/admin/',
-                element: <ProtectedRoute />,
-                children: [{ path: '', element: <AdminPage /> }],
+                path: 'admin',
+                element: (
+                    <ProtectedRoute>
+                        <AdminPage />
+                    </ProtectedRoute>
+                ),
             },
             {
-                path: '/torneio/',
-                element: <ProtectedRoute />,
-                children: [{ path: '', element: <TournamentsPage /> }],
+                path: 'torneio',
+                element: (
+                    <ProtectedRoute>
+                        <TournamentsPage />
+                    </ProtectedRoute>
+                ),
             },
             {
-                path: '/create-tournament',
-                element: <ProtectedRoute />,
-                children: [{ path: '', element: <RegisterTorneio /> }],
+                path: 'create-tournament',
+                element: (
+                    <ProtectedRoute>
+                        <RegisterTorneio />
+                    </ProtectedRoute>
+                ),
             },
             {
-                path: '/edit-tournament/:id',
-                element: <ProtectedRoute />,
-                children: [{ path: '', element: <EditTorneio /> }],
+                path: 'edit-tournament/:id',
+                element: (
+                    <ProtectedRoute>
+                        <EditTorneio />
+                    </ProtectedRoute>
+                ),
             },
             {
-                path: '/delete-tournament/:id',
-                element: <ProtectedRoute />,
-                children: [{ path: '', element: <DeletarTorneio /> }],
+                path: 'delete-tournament/:id',
+                element: (
+                    <ProtectedRoute>
+                        <DeletarTorneio />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'authenticate',
+                element: (
+                    <ProtectedRoute>
+                        <Authenticate />
+                    </ProtectedRoute>
+                ),
             },
         ],
     },

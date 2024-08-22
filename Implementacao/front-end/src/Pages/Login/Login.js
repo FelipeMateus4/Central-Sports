@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../Context/AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -29,7 +29,7 @@ const Login = () => {
             if (response.status === 200) {
                 loginAuth(data.user);
                 console.log('Logado com sucesso');
-                navigate('/admin');
+                navigate('/authenticate');
             } else if (response.status === 401) {
                 console.log('Não autorizado');
                 setError({ message: data.message });

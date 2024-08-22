@@ -2,6 +2,7 @@ import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { userModel } from '../Models/UserModel';
 import speakeasy from 'speakeasy';
+import { sendTokenLoginEmail } from './sendGridEmailOptions';
 
 passport.use(
     new LocalStrategy(
@@ -31,6 +32,7 @@ passport.use(
                 });
 
                 console.log(token);
+                // sendTokenLoginEmail(email, token);
 
                 return done(null, user);
             } catch (error) {

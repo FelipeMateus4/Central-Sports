@@ -17,7 +17,23 @@ export const sendTokenEmail = async (email: string) => {
 
     try {
         await sgMail.send(msg);
-        console.log('Email enviado');
+        console.log('Email de boas vindas enviado');
+    } catch (error) {
+        console.error('Erro ao enviar email: ' + error);
+    }
+};
+
+export const sendTokenLoginEmail = async (email: string, token: string) => {
+    const msg = {
+        to: email,
+        from: 'dropzin01@gmail.com',
+        subject: 'Seja muito bem vindo a nossa plataforma',
+        text: 'Obrigador por se inscrever seja bem vindo: ',
+        html: `<p>Bem-vindo!<br><img src="${token}" alt="Imagem de boas-vindas"></p>`,
+    };
+    try {
+        await sgMail.send(msg);
+        console.log('Email enviado com o token');
     } catch (error) {
         console.error('Erro ao enviar email: ' + error);
     }

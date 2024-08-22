@@ -21,6 +21,7 @@ app.use(flash());
 
 app.use(
     session({
+        name: 'auth_token', // Nome personalizado do cookie
         secret: process.env.SECRETKEY as string,
         resave: false,
         saveUninitialized: false,

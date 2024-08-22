@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../Context/AuthContext';
+import { AuthContext } from '../../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import './AdminPage.css'; // Certifique-se de criar este arquivo para os estilos
 

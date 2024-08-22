@@ -1,16 +1,30 @@
 .page-section-selecao {
-    background: url('../../Assets/esporte2.jpg') no-repeat center center;
-    background-size: cover;
+    background: #21317a;
+    background: linear-gradient(120deg, #041624, #21317a);
+    animation: gradientBG 9s linear infinite;
+    background-size: 200% 200%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     flex: 1;
-    padding: 20px;
+    overflow: hidden;
+    padding: 0;
     margin: 0;
-    height: 100vh; /* Garante que a altura ocupe toda a tela */
+    height: 100vh; /* Garante que a seção ocupe toda a altura da tela */
 }
 
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 .selecao-container {
     background-color: #f4f4f467;
     padding: 20px;

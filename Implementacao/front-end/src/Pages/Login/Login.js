@@ -29,7 +29,7 @@ const Login = () => {
             if (response.status === 200) {
                 loginAuth(data.user);
                 console.log('Logado com sucesso');
-                navigate('/authenticate');
+                navigate('/admin');
             } else if (response.status === 401) {
                 console.log('Não autorizado');
                 setError({ message: data.message });
@@ -64,7 +64,7 @@ const Login = () => {
                                 onChange={(e) => setSenha(e.target.value)}
                             />
                             <div>
-                                <a href="/treinador/register" className="text-decoration-none ml-2 regoster">
+                                <a href="/SelecaoUsuario" className="text-decoration-none ml-2 regoster">
                                     Registre-se
                                 </a>
                             </div>

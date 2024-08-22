@@ -45,7 +45,7 @@ router.post('/authenticate', ensureAuthenticated, async (req: Request, res: Resp
             await UserServices.updateUserServices(update);
             return res.status(200).send({ message: 'verificao concluida com sucesso' });
         } else {
-            return res.status(400).send({ message: 'codigo errado ou expirado' });
+            return res.status(401).send({ message: 'codigo errado ou expirado' });
         }
     } catch (error) {
         next(error);

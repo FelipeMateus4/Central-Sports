@@ -29,7 +29,7 @@ const Login = () => {
             if (response.status === 200) {
                 loginAuth(data.user);
                 console.log('Logado com sucesso');
-                navigate('/admin');
+                navigate('/authenticate');
             } else if (response.status === 401) {
                 console.log('Não autorizado');
                 setError({ message: data.message });

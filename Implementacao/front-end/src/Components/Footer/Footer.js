@@ -26,18 +26,30 @@ const Footer = () => {
                     <h4>Siga a Centra Sports</h4>
                     <ul className="social-media">
                         <li>
-                            <a href="https://www.instagram.com/filipedeschamps/" className="text-decoration-none ml-2">
+                            <a href="https://www.facebook.com/?locale=pt_BR" className="text-decoration-none ml-2">
                                 Facebook
                             </a>
                         </li>
-                        <li>X</li>
+                        <li>
+                            <a href="https://x.com/elonmusk" className="text-decoration-none ml-2">
+                                X
+                            </a>
+                        </li>
                         <li>
                             <a href="https://www.instagram.com/filipedeschamps/" className="text-decoration-none ml-2">
                                 Instagram
                             </a>
                         </li>
-                        <li>YouTube</li>
-                        <li>Discord</li>
+                        <li>
+                            <a href="https://www.youtube.com/watch?v=eskq53977sY" className="text-decoration-none ml-2">
+                                Youtube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://discord.com" className="text-decoration-none ml-2">
+                                Discord
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

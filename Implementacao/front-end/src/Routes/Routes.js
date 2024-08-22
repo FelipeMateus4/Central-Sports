@@ -6,6 +6,7 @@ import { AdminPage } from '../Pages/AdminPage/AdminPage';
 import TournamentsPage from '../Pages/Torneio/Torneio';
 import RegisterTorneio from '../Pages/RegistroTorneio/RegisterTorneio';
 import EditTorneio from '../Pages/EditTorneio/EditTorneio';
+import ProtectedRoute from './ProtectedRoute';
 import DeletarTorneio from '../Pages/DeletarTorneio/DeletarTorneio'; // Importe o componente DeletarTorneio
 
 export const router = createBrowserRouter([
@@ -15,11 +16,35 @@ export const router = createBrowserRouter([
         children: [
             { path: '', element: <Login /> },
             { path: '/treinador/register', element: <RegisterTreinador /> },
-            { path: '/admin/', element: <AdminPage /> },
-            { path: '/torneio/', element: <TournamentsPage /> },
-            { path: '/create-tournament', element: <RegisterTorneio /> },
-            { path: '/edit-tournament/:id', element: <EditTorneio /> },
-            { path: '/delete-tournament/:id', element: <DeletarTorneio /> }, // Adicione esta linha
+            {
+                path: '/admin/',
+                element: <ProtectedRoute />,
+                children: [{ path: '', element: <AdminPage /> }],
+            },
+            {
+                path: '/torneio/',
+                element: <ProtectedRoute />,
+                children: [{ path: '', element: <TournamentsPage /> }],
+            },
+            {
+                path: '/create-tournament',
+                element: <ProtectedRoute />,
+                children: [{ path: '', element: <RegisterTorneio /> }],
+            },
+            {
+                path: '/edit-tournament/:id',
+                element: <ProtectedRoute />,
+                children: [{ path: '', element: <EditTorneio /> }],
+            },
+            {
+                path: '/delete-tournament/:id',
+                element: <ProtectedRoute />,
+                children: [{ path: '', element: <DeletarTorneio /> }],
+            },
         ],
+    },
+    {
+        path: '*',
+        element: <p>404 Error - Nothing here...</p>,
     },
 ]);

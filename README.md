@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Central Sports é uma plataforma dinâmica de torneios esportivos, projetada para reunir atletas e treinadores de diversas modalidades. Aqui, atletas e treinadores podem se inscrever, conectar-se e participar de torneios. Os gestores de eventos têm a capacidade de promover torneios, vinculando atletas e treinadores a torneios de suas respectivas modalidades de forma intuitiva.
+Central Sports é uma plataforma dinâmica de torneios esportivos, projetada para reunir atletas e treinadores de diversas modalidades. Atletas e treinadores podem se inscrever, conectar-se e participar de torneios. Gestores de eventos podem promover torneios, vinculando atletas e treinadores de forma intuitiva.
 
 ## Tecnologias Utilizadas
 
@@ -10,47 +10,65 @@ Central Sports é uma plataforma dinâmica de torneios esportivos, projetada par
 - **PostgreSQL**: 16.0
 - **JavaScript (ECMAScript)**: ES2016
 - **Node.js**: v20.15.0
-- **IDE**: VSCode
+- **IDE**: VSCode v1.92.2
 
 ## Estrutura de Diretórios
+### IMPLEMENTACAO
+### Backend
 
-Abaixo está a estrutura de diretórios do projeto, com uma breve descrição de cada pasta:
+- **back-end/src**: Diretório principal que contém o código fonte do backend.
+  - **connections**: Gerencia a conexão com o banco de dados.
+  - **controllers**: Lida com as requisições HTTP e lógica dos controladores.
+  - **middlewares**: Funções que interceptam requisições e respostas.
+  - **model**: Modelos de dados usados no projeto.
+  - **persistence**: Acesso aos dados, interagindo com os modelos.
+  - **routes**: Mapeia URLs para controladores específicos.
+  - **services**: Contém a lógica de negócio da aplicação.
+  - **types**: Definições de tipos TypeScript usadas no projeto.
+  - **utils**: Funções utilitárias usadas em várias partes da aplicação.
+- **config**: Contém arquivos de configuração, como `tsconfig.json`, `prettierrc.json`, entre outros.
+- **node_modules**: Diretório gerado pelo npm que contém todas as dependências do projeto.
+- **app.ts**: Arquivo principal que inicializa a aplicação.
+- **index.ts**: Arquivo de entrada do projeto.
+- **.env**: Arquivo de variáveis de ambiente.
+- **package.json**: Dependências e scripts do projeto.
+- **tsconfig.json**: Configuração do TypeScript.
+- **jest.config.ts**: Configuração do Jest para testes.
+- **.gitignore**: Arquivo que especifica quais arquivos e pastas devem ser ignorados pelo Git.
 
-- ### Backend
-  - **src**: Diretório principal que contém o código fonte do backend.
-    - **connections**: Gerencia a conexão com o banco de dados.
-    - **controllers**: Contém a lógica dos controladores, que lidam com as requisições HTTP.
-    - **middlewares**: Contém middlewares utilizados no projeto, que são funções que interceptam requisições e respostas.
-    - **model**: Contém os modelos de dados usados no projeto.
-    - **persistence**: Contém a lógica de acesso aos dados, geralmente interagindo diretamente com os modelos.
-    - **routes**: Define as rotas da aplicação, mapeando URLs para controladores específicos.
-    - **services**: Contém a lógica de negócio da aplicação.
-    - **types**: Contém definições de tipos TypeScript utilizadas no projeto.
-    - **utils**: Contém funções utilitárias usadas em várias partes da aplicação.
-  - **app.ts**: Arquivo principal que inicializa a aplicação.
-  - **index.ts**: Arquivo de entrada do projeto.
-  - **.prettierrc.json**: Arquivo de configuração do Prettier.
-  - **jest.config.ts**: Arquivo de configuração do Jest.
-  - **package.json**: Contém as dependências e scripts do projeto.
-  - **tsconfig.json**: Arquivo de configuração do TypeScript.
+### Frontend
 
-- ### Frontend
-  - **public**: Contém arquivos públicos estáticos que são servidos diretamente.
-  - **src**: Diretório principal que contém o código fonte do frontend.
-    - **assets**: Contém imagens e outros recursos estáticos utilizados na aplicação.
-    - **components**: Contém os componentes React reutilizáveis.
-    - **context**: Contém os contextos React para gerenciamento de estado global.
-    - **pages**: Contém os componentes de página, que geralmente correspondem a rotas no aplicativo.
-    - **routes**: Define as rotas do frontend.
-  - **App.css**: Arquivo de estilos CSS principal da aplicação.
-  - **App.js**: Componente principal da aplicação React.
-  - **App.test.js**: Arquivo de teste para o componente App.
-  - **index.css**: Arquivo de estilos CSS aplicado globalmente.
-  - **index.js**: Ponto de entrada do aplicativo React.
-  - **reportWebVitals.js**: Script para medir a performance do aplicativo.
-  - **setupTests.js**: Script de configuração para testes com Jest.
-  - **.prettierrc.json**: Arquivo de configuração do Prettier.
-  - **package.json**: Contém as dependências e scripts do projeto.
+- **front-end/public**: Contém arquivos públicos estáticos.
+- **front-end/src**: Código fonte do frontend.
+  - **assets**: Imagens e recursos estáticos.
+  - **components**: Componentes React reutilizáveis.
+  - **context**: Contextos React para gerenciamento de estado global.
+  - **pages**: Componentes de página que correspondem às rotas.
+  - **routes**: Define as rotas do frontend.
+  - **styles**: Arquivos de estilo CSS aplicados globalmente ou a componentes específicos.
+- **build**: Diretório gerado pela build do projeto frontend.
+- **node_modules**: Diretório gerado pelo npm que contém todas as dependências do projeto frontend.
+- **package.json**: Dependências e scripts do projeto frontend.
+- **.gitignore**: Arquivo que especifica quais arquivos e pastas devem ser ignorados pelo Git no frontend.
+- **README.md**: Documentação do projeto frontend.
+
+### Documentação e Requisitos
+
+- **Padrões Adotados**: Diretório contendo regras de verificação e análise de requisitos.
+- **Requisitos**: Inclui diagramas, documentos de casos de uso, e outros artefatos necessários para o desenvolvimento do projeto.
+  - **DiagramasDeSequência**: Contém diagramas de sequência em formato JPEG.
+  - **DiagramasDeClasses**: Contém diagramas de classes.
+  - **DiagramasDeImplantação**: Contém diagramas de implantação.
+  - **Documentação de Requisitos**: Inclui documentos de requisitos em formato DOCX e PDF.
+
+## Regras de Clean Code
+
+- **Funções Pequenas e Coesas**: Cada função deve realizar apenas uma tarefa específica.
+- **Nomes Claros e Descritivos**: Utilizar nomes que reflitam claramente o propósito de variáveis, funções e classes.
+- **Evitar Comentários Desnecessários**: O código deve ser autoexplicativo; comentários devem ser usados apenas quando realmente necessários para clarificação.
+- **Retorno Direto de Funções**: Evitar o uso de variáveis temporárias desnecessárias ao retornar valores.
+- **Uso de Objetos para Agrupar Parâmetros**: Facilita a leitura e manutenção de funções com múltiplos parâmetros relacionados.
+- **Evitar Código Duplicado**: Reutilizar código através de funções e componentes reutilizáveis para manter a consistência e facilitar manutenção.
 
 
 - ### Regras de Clean Code

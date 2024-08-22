@@ -9,6 +9,13 @@ export const AdminPage = () => {
 
     const handleLogout = () => {
         logout();
+        fetch('http://localhost:5000/auth/logout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+        });
         navigate('/');
     };
 

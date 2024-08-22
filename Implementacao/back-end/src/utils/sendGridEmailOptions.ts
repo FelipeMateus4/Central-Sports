@@ -29,7 +29,7 @@ export const sendTokenLoginEmail = async (email: string, token: string) => {
         from: 'dropzin01@gmail.com',
         subject: 'Seja muito bem vindo a nossa plataforma',
         text: 'Obrigador por se inscrever seja bem vindo: ',
-        html: `<p>Bem-vindo!<br><img src="${token}" alt="Imagem de boas-vindas"></p>`,
+        html: `<p>Seu código de verificação: ${token}</p>`,
     };
     try {
         await sgMail.send(msg);

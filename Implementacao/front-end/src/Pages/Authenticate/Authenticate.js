@@ -22,7 +22,7 @@ const Authenticate = () => {
         e.preventDefault();
 
         try {
-            const response = await fetch('http://localhost:5000/auth/login', {
+            const response = await fetch('http://localhost:5000/auth/authenticate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -35,9 +35,7 @@ const Authenticate = () => {
             console.log(data);
 
             if (response.status === 200) {
-                loginAuth(data.user);
-                console.log('Logado com sucesso');
-                navigate('/authenticate');
+                navigate('/admin');
             } else if (response.status === 401) {
                 console.log('Não autorizado');
                 setError({ message: data.message });
@@ -51,8 +49,9 @@ const Authenticate = () => {
     return (
         <div className="page-section-authenticate">
             <div className="authenticate-container">
-                <h2 className="title">Seu Token</h2>
-                <p className="text-center timer-text">Seu código expira em: {timer} segundos</p>
+                <h2 className="title-aut">Seu Token</h2>
+                {timer > 0 && <p className="text-center timer-text-2">Seu código expira em: {timer} segundos</p>}
+                {timer === 0 && <p className="text-center timer-text">Seu código expirou</p>}
                 {error && <div className="error">{error.message}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
@@ -67,7 +66,7 @@ const Authenticate = () => {
                         />
                     </div>
                     <button type="submit" className="btn-authenticate">
-                        Registrar
+                        Enviar
                     </button>
                 </form>
             </div>

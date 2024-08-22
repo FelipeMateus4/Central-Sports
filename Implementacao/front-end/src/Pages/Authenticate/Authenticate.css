@@ -33,12 +33,48 @@
     max-width: 1000px; /* Reduz a largura máxima */
     min-width: 100px;
     min-height: 100px;
-    width: 500px;
-    height: 416px; /* Aumenta a altura para acomodar os botões sociais */
+    width: 400px;
+    height: 250px; /* Aumenta a altura para acomodar os botões sociais */
     padding: 20px;
     background-color: rgb(19, 25, 59);
     border: 2px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(30px);
+}
+
+.timer-text {
+    color: #ff0000;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.timer-text-2 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.btn-authenticate {
+    margin-left: 75px;
+    width: 150px;
+    color: #ffffff; /* Cor do texto */
+    font-size: 17px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #182fc4; /* Cor de fundo do botão */
+    border: 2px solid #031a46; /* Borda do botão */
+    border-radius: 10px;
+    padding: 10px; /* Espaçamento interno */
+    border-radius: 5px; /* Cantos arredondados */
+    margin-top: 10px;
+}
+
+.title-aut {
+    margin-bottom: 10px;
+    display: flex;
+    font-size: 35px;
+    color: rgb(245, 245, 245);
+    font-family: 'Times New Roman', Times, serif;
 }

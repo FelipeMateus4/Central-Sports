@@ -1,0 +1,68 @@
+.page-section-selecao {
+    background: #21317a;
+    background: linear-gradient(120deg, #041624, #21317a);
+    animation: gradientBG 9s linear infinite;
+    background-size: 200% 200%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    height: 100vh; /* Garante que a seção ocupe toda a altura da tela */
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.selecao-container {
+    background-color: #f4f4f467;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.selecao-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+.selecao-buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.selecao-link {
+    text-decoration: none;
+}
+
+.selecao-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.selecao-button:hover {
+    background-color: #0056b3;
+}

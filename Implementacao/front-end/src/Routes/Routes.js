@@ -9,6 +9,7 @@ import EditTorneio from '../Pages/EditTorneio/EditTorneio';
 import ProtectedRoute from './ProtectedRoute';
 import DeletarTorneio from '../Pages/DeletarTorneio/DeletarTorneio';
 import Authenticate from '../Pages/Authenticate/Authenticate';
+import SelecaoUsuario from '../Pages/SelecaoUsuario/SelecaoUsuario';
 
 export const router = createBrowserRouter([
     {
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
                         <Authenticate />
                     </ProtectedRoute>
                 ),
+            },
+            {
+                path: 'SelecaoUsuario',
+                element: <SelecaoUsuario />,
             },
         ],
     },

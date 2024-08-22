@@ -11,9 +11,10 @@ import speakeasy from 'speakeasy';
 const router = Router();
 
 router.post('/', async (req: Request, res: Response, next: NextFunction) => {
-    const { email, password, type } = req.body;
+    const { email, password } = req.body;
 
     const secret = speakeasy.generateSecret({ length: 20 });
+    const type = 'treinador';
     const user: userType = {
         email: email,
         password: password,

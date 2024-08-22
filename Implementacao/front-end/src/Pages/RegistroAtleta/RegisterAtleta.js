@@ -31,7 +31,6 @@ const RegisterAtleta = () => {
                     cpf: cpf,
                     sport: sport,
                     password: password,
-                    type: confirmPassword,
                 }),
             });
 

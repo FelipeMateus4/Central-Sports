@@ -16,6 +16,10 @@ const RegisterTreinador = () => {
         event.preventDefault();
 
         try {
+            if (password !== confirmPassword) {
+                setError({ message: 'As senhas não conferem.' });
+                return;
+            }
             const response = await fetch('http://localhost:5000/treinador', {
                 method: 'POST',
                 headers: {
@@ -27,7 +31,6 @@ const RegisterTreinador = () => {
                     cpf: cpf,
                     graduation: graduation,
                     password: password,
-                    type: confirmPassword,
                 }),
             });
 

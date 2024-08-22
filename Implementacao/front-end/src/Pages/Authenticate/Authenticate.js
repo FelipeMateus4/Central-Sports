@@ -1,5 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { AuthContext } from '../../Context/AuthContext';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Authenticate.css';
 
@@ -7,7 +6,6 @@ const Authenticate = () => {
     const [token, setToken] = useState('');
     const [timer, setTimer] = useState(60);
     const [error, setError] = useState(null);
-    const { loginAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
     useEffect(() => {

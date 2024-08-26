@@ -1,9 +1,15 @@
 import InscricoesPersistence from '../Persistence/InscricoesPersistence';
+import TorneioPersistence from '../Persistence/TorneioPersistence';
 
 const createInscricao = async (inscricao: any) => {
     try {
         const inscricoesAtleta = await InscricoesPersistence.countInscricaoAtleta(inscricao.atletaId);
         const inscricoesTreinador = await InscricoesPersistence.countInscricaoTreinador(inscricao.treinadorId);
+        const vagas = await TorneioPersistence.getVagas(inscricao.torneioId);
+        if (vagas <= 0) {
+            throw new Error('Torneio sem vagas');
+        }
+        await TorneioPersistence.decrementVagas(inscricao.torneioId);
         if (inscricoesAtleta >= 1) {
             throw new Error('Atleta já inscrito em um torneio');
         }

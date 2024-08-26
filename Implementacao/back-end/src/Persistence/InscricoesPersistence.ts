@@ -1,3 +1,4 @@
+import { Transaction } from 'sequelize';
 import { InscricaoModel } from '../Models/Inscricões';
 
 const createInscricao = async (inscricao: any) => {
@@ -20,7 +21,7 @@ const getInscricaoAtleta = async (id: number) => {
     }
 };
 
-const countInscricaoAtleta = async (id: number) => {
+const countInscricaoAtleta = async (id: number, transaction?: Transaction) => {
     try {
         const count = await InscricaoModel.count({ where: { atletaModelId: id } });
         return count;
@@ -29,7 +30,7 @@ const countInscricaoAtleta = async (id: number) => {
     }
 };
 
-const countInscricaoTreinador = async (id: number) => {
+const countInscricaoTreinador = async (id: number, transaction?: Transaction) => {
     try {
         const count = await InscricaoModel.count({ where: { treinadorModelId: id } });
         return count;

@@ -1,6 +1,6 @@
 import { Transaction } from 'sequelize';
 import AtletaPersistence from '../Persistence/AtletaPersistense';
-import { any } from 'zod';
+import InscricoesPersistence from '../Persistence/InscricoesPersistence';
 
 const createAtleta = async (atleta: any, transaction: Transaction) => {
     try {
@@ -28,6 +28,10 @@ const updateAtleta = async (updates: any, transaction: Transaction) => {
 
 const deleteAtleta = async (id: number, transaction: Transaction) => {
     try {
+        const inscricoes = await InscricoesPersistence.countInscricaoAtleta(id, transaction);
+        if (inscricoes > 0) {
+            throw new Error('Inscriçoẽs pendentes');
+        }
         return await AtletaPersistence.deleteAtleta(id, transaction);
     } catch (error) {
         throw error;

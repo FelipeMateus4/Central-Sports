@@ -42,7 +42,7 @@ const updateTreinador = async (updates: any, transaction: Transaction) => {
     }
 };
 
-const deleteUser = async (id: number, transaction: Transaction) => {
+const deleteTreinador = async (id: number, transaction: Transaction) => {
     try {
         const confirm = await treinadorModel.destroy({ where: { id: id } });
         if (confirm >= 1) {
@@ -55,4 +55,4 @@ const deleteUser = async (id: number, transaction: Transaction) => {
     }
 };
 
-export default { createTreinador, getTreinador, updateTreinador, deleteUser };
+export default { createTreinador, getTreinador, updateTreinador, deleteTreinador };

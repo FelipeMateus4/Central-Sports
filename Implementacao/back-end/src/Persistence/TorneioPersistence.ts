@@ -1,6 +1,4 @@
-import { Transaction } from 'sequelize';
 import { torneioModel } from '../Models/TorneioModel';
-import { torneioType } from '../Types/TorneioType';
 
 const createTorneio = async (torneio: any) => {
     try {
@@ -54,11 +52,51 @@ const deleteTorneio = async (id: number) => {
         if (confirm >= 1) {
             return 'Torneio successfully deleted';
         } else {
-            throw new Error('User not found');
+            throw new Error('Torneio not found');
         }
     } catch (error) {
         throw error;
     }
 };
 
-export default { createTorneio, getTorneio, updateTorneio, deleteTorneio, getTorneioById };
+const decrementVagas = async (id: number) => {
+    try {
+        const torneio = await torneioModel.findByPk(id);
+        if (!torneio) {
+            throw new Error('Torneio not found');
+        }
+        if (torneio.qtdVagas > 0) {
+            torneio.qtdVagas -= 1;
+            await torneio.save();
+        } else {
+            throw new Error('No more vacancies available');
+        }
+        return torneio.qtdVagas;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const getVagas = async (id: number) => {
+    try {
+        const torneio = await torneioModel.findByPk(id, {
+            attributes: ['qtdVagas'],
+        });
+        if (!torneio) {
+            throw new Error('Torneio not found');
+        }
+        return torneio.qtdVagas;
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default {
+    createTorneio,
+    getTorneio,
+    getTorneioById,
+    updateTorneio,
+    deleteTorneio,
+    decrementVagas,
+    getVagas,
+};

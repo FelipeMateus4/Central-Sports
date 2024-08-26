@@ -1,6 +1,6 @@
 import { treinadorType } from '../Types/TreinadorTypes';
 import TreinadorPersistence from '../Persistence/TreinadorPersistence';
-import { treinadorModel } from '../Models/TreinadorModel';
+import InscricoesPersistence from '../Persistence/InscricoesPersistence';
 import { Transaction } from 'sequelize';
 
 const createTreinador = (treinador: treinadorType, transaction: Transaction) => {
@@ -29,7 +29,11 @@ const updateTreinador = async (updates: any, transaction: Transaction) => {
 
 const deleteUser = async (id: number, transaction: Transaction) => {
     try {
-        return await TreinadorPersistence.deleteUser(id, transaction);
+        const inscricoes = await InscricoesPersistence.countInscricaoTreinador(id, transaction);
+        if (inscricoes > 0) {
+            throw new Error('Inscriçoẽs pendentes');
+        }
+        return await TreinadorPersistence.deleteTreinador(id, transaction);
     } catch (error) {
         throw error;
     }

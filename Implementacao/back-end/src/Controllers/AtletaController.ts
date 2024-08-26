@@ -1,16 +1,13 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import { userType } from '../Types/UserType';
+import speakeasy from 'speakeasy';
 import sequelize from '../Connections/Sequelize';
 import UserServices from '../Services/UserServices';
 import AtletaServices from '../Services/AtletaService';
-import { ensureAuthenticated } from '../Middlewares/IsAuthenticated';
+import { userType } from '../Types/UserType';
 import { atletaType } from '../Types/AtletaType';
-import speakeasy from 'speakeasy';
 
-const router = Router();
-
-router.post('/', async (req: Request, res: Response, next: NextFunction) => {
-    const { email, password } = req.body;
+const registerAtleta = async (req: Request, res: Response, next: NextFunction) => {
+    const { email, password, name, cpf, sport } = req.body;
     const secret = speakeasy.generateSecret({ length: 20 });
     const type = 'atleta';
 
@@ -21,17 +18,17 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
         session: false,
         type: type,
     };
+
     const atleta: atletaType = {
-        name: req.body.name,
-        cpf: req.body.cpf,
-        sport: req.body.sport,
+        name: name,
+        cpf: cpf,
+        sport: sport,
     };
 
     const transaction = await sequelize.transaction();
 
     try {
         const createdAtleta: any = await AtletaServices.createAtletaService(atleta, transaction);
-
         user.atletaModelId = createdAtleta.id;
 
         const createdUser = await UserServices.createUserServices(user, transaction);
@@ -43,9 +40,9 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
         await transaction.rollback();
         next(error);
     }
-});
+};
 
-router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+const getAtleta = async (req: Request, res: Response, next: NextFunction) => {
     const email = req.body.email;
     const transaction = await sequelize.transaction();
 
@@ -60,9 +57,9 @@ router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: N
         await transaction.rollback();
         next(error);
     }
-});
+};
 
-router.patch('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+const updateAtleta = async (req: Request, res: Response, next: NextFunction) => {
     const keys = req.body;
     const transaction = await sequelize.transaction();
 
@@ -77,9 +74,9 @@ router.patch('/', ensureAuthenticated, async (req: Request, res: Response, next:
         await transaction.rollback();
         next(error);
     }
-});
+};
 
-router.delete('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+const deleteAtleta = async (req: Request, res: Response, next: NextFunction) => {
     const email = req.body.email;
     const transaction = await sequelize.transaction();
 
@@ -90,11 +87,11 @@ router.delete('/', ensureAuthenticated, async (req: Request, res: Response, next
 
         await transaction.commit();
 
-        return res.status(200).send({ message: atleta });
+        return res.status(200).send({ message: 'Usuário e atleta deletados com sucesso.' });
     } catch (error) {
         await transaction.rollback();
         next(error);
     }
-});
+};
 
-export { router as AtletaController };
+export { registerAtleta, getAtleta, updateAtleta, deleteAtleta };

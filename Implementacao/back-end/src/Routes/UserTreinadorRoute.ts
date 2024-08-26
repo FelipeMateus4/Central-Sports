@@ -1,9 +1,13 @@
 import { Router } from 'express';
-import { treinadorController } from '../Controllers/UserTreinadorController';
+import { createTreinador, getTreinador, updateTreinador, deleteTreinador } from '../Controllers/TreinadorController';
 import errorHandler from '../Middlewares/ErrorHandler';
+import { ensureAuthenticated } from '../Middlewares/IsAuthenticated';
 
 const router = Router();
 
-router.use('/treinador', treinadorController, errorHandler);
+router.post('/', createTreinador, errorHandler);
+router.patch('/', ensureAuthenticated, updateTreinador, errorHandler);
+router.delete('/', ensureAuthenticated, deleteTreinador, errorHandler);
+router.get('/', ensureAuthenticated, getTreinador, errorHandler);
 
-export { router as userTreinadorRoutes };
+export { router as TreinadorRoutes };

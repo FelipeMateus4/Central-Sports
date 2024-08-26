@@ -5,8 +5,8 @@ import { ensureAuthenticated } from '../Middlewares/IsAuthenticated';
 
 const router = Router();
 
-router.use('/login', login, errorHandler);
-router.use('/authenticate', ensureAuthenticated, authenticate, errorHandler);
+router.post('/login', login, errorHandler);
+router.post('/authenticate', ensureAuthenticated, authenticate, errorHandler);
 router.use('/logout', ensureAuthenticated, logout, errorHandler);
 
 export { router as authRouter };

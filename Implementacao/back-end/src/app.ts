@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import passport from 'passport';
 import flash from 'express-flash';
-import { userTreinadorRoutes } from './Routes/UserTreinadorRoute';
+import { TreinadorRoutes } from './Routes/UserTreinadorRoute';
 import { authRouter } from './Routes/AuthRoute';
 import { config } from 'dotenv';
 import { userAtletaRoutes } from './Routes/UserAtletaRoute';
@@ -45,8 +45,8 @@ app.use(
 );
 
 app.use('/auth', authRouter);
-app.use(userTreinadorRoutes);
-app.use(userAtletaRoutes);
-app.use(torneioRoutes);
+app.use('/treinador', TreinadorRoutes);
+app.use('/atleta', userAtletaRoutes);
+app.use('/torneio', torneioRoutes);
 
 export { app };

@@ -5,12 +5,11 @@ import sequelize from '../Connections/Sequelize';
 import TreinadorServices from '../Services/TreinadorServices';
 import UserServices from '../Services/UserServices';
 import { ensureAuthenticated } from '../Middlewares/IsAuthenticated';
-import { userModel } from '../Models/UserModel';
 import speakeasy from 'speakeasy';
 
 const router = Router();
 
-router.post('/', async (req: Request, res: Response, next: NextFunction) => {
+const createTreinador = async (req: Request, res: Response, next: NextFunction) => {
     const { email, password } = req.body;
 
     const secret = speakeasy.generateSecret({ length: 20 });
@@ -47,9 +46,9 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
         await transaction.rollback();
         next(error);
     }
-});
+};
 
-router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+const getTreinador = async (req: Request, res: Response, next: NextFunction) => {
     const email = req.body.email;
     const transaction = await sequelize.transaction();
 
@@ -64,16 +63,16 @@ router.get('/', ensureAuthenticated, async (req: Request, res: Response, next: N
         await transaction.rollback();
         next(error);
     }
-});
+};
 
-router.patch('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+const updateTreinador = async (req: Request, res: Response, next: NextFunction) => {
     const updates = req.body;
     const transaction = await sequelize.transaction();
 
     try {
         const updatedTreinador = await TreinadorServices.updateTreinadorServices(updates, transaction);
         const updatedUser = await UserServices.updateUserServices(updates, transaction);
-        transaction.commit();
+        await transaction.commit();
 
         return res
             .status(200)
@@ -82,9 +81,9 @@ router.patch('/', ensureAuthenticated, async (req: Request, res: Response, next:
         await transaction.rollback();
         next(error);
     }
-});
+};
 
-router.delete('/', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+const deleteTreinador = async (req: Request, res: Response, next: NextFunction) => {
     const email = req.body.email;
     const transaction = await sequelize.transaction();
     try {
@@ -97,5 +96,6 @@ router.delete('/', ensureAuthenticated, async (req: Request, res: Response, next
         await transaction.rollback();
         next(error);
     }
-});
-export { router as treinadorController };
+};
+
+export { createTreinador, getTreinador, updateTreinador, deleteTreinador };

@@ -5,8 +5,6 @@ import UserServices from '../Services/UserServices';
 import { session } from 'passport';
 import { userModel } from '../Models/UserModel';
 
-const router = Router();
-
 const login = async (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate('local', (err: any, user: any, info: any) => {
         if (err) return next(err);

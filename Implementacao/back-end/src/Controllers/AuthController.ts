@@ -4,11 +4,10 @@ import speakeasy from 'speakeasy';
 import UserServices from '../Services/UserServices';
 import { session } from 'passport';
 import { userModel } from '../Models/UserModel';
-import { ensureAuthenticated } from '../Middlewares/IsAuthenticated';
 
 const router = Router();
 
-router.post('/login', (req: Request, res: Response, next) => {
+const login = async (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate('local', (err: any, user: any, info: any) => {
         if (err) return next(err);
         if (!user) {
@@ -24,8 +23,9 @@ router.post('/login', (req: Request, res: Response, next) => {
             });
         });
     })(req, res, next);
-});
-router.post('/authenticate', ensureAuthenticated, async (req: Request, res: Response, next: NextFunction) => {
+};
+
+const authenticate = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const token = req.body.token;
         const user: any = req.user;
@@ -50,8 +50,9 @@ router.post('/authenticate', ensureAuthenticated, async (req: Request, res: Resp
     } catch (error) {
         next(error);
     }
-});
-router.post('/logout', async (req: Request, res: Response, next: NextFunction) => {
+};
+
+const logout = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const user: any = req.user;
         if (user.allowsession) {
@@ -66,6 +67,6 @@ router.post('/logout', async (req: Request, res: Response, next: NextFunction) =
     } catch (error) {
         next(error);
     }
-});
+};
 
-export { router as authCOntroller };
+export { login, authenticate, logout };

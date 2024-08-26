@@ -44,7 +44,7 @@ app.use(
     })
 );
 
-app.use(authRouter);
+app.use('/auth', authRouter);
 app.use(userTreinadorRoutes);
 app.use(userAtletaRoutes);
 app.use(torneioRoutes);

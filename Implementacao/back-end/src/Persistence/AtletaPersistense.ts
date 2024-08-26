@@ -1,7 +1,7 @@
 import { Transaction } from 'sequelize';
 import { atletaModel } from '../Models/AtletaModel';
 
-const createAtletaPersistense = async (atleta: any, transaction: Transaction) => {
+const createAtleta = async (atleta: any, transaction: Transaction) => {
     try {
         return await atletaModel.create(atleta, { transaction });
     } catch (error) {
@@ -54,4 +54,4 @@ const deleteAtleta = async (id: number, transaction: Transaction) => {
     }
 };
 
-export default { createAtletaPersistense, getAtleta, updateAtleta, deleteAtleta };
+export default { createAtleta, getAtleta, updateAtleta, deleteAtleta };

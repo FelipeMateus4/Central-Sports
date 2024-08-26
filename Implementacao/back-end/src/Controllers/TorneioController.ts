@@ -16,7 +16,7 @@ const createTorneio = async (req: Request, res: Response, next: NextFunction) =>
     };
 
     try {
-        const createdTorneio = await TorneioServices.createTorneioService(torneio);
+        const createdTorneio = await TorneioServices.createTorneio(torneio);
 
         return res.status(201).send({ message: 'Torneio criado com sucesso.', data: { createdTorneio } });
     } catch (error) {
@@ -28,7 +28,7 @@ const getTorneioById = async (req: Request, res: Response, next: NextFunction) =
     try {
         const id: number = parseInt(req.params.id, 10);
 
-        const torneio = await TorneioServices.getTorneioByIdService(id);
+        const torneio = await TorneioServices.getTorneioById(id);
 
         return res.status(200).send({ message: 'Veja abaixo os dados do torneio:', data: { torneio } });
     } catch (error) {
@@ -38,7 +38,7 @@ const getTorneioById = async (req: Request, res: Response, next: NextFunction) =
 
 const getAllTorneios = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const torneio = await TorneioServices.getTorneioService();
+        const torneio = await TorneioServices.getTorneio();
 
         res.status(200).send({ message: 'Veja abaixo os dados do torneio:', data: { torneio } });
     } catch (error) {
@@ -50,7 +50,7 @@ const updateTorneio = async (req: Request, res: Response, next: NextFunction) =>
     const keys = req.body;
 
     try {
-        const torneio = await TorneioServices.updateTorneioService(keys);
+        const torneio = await TorneioServices.updateTorneio(keys);
         return res.status(200).send({ message: 'Veja abaixo os dados atualizados do torneio:', data: { torneio } });
     } catch (error) {
         next(error);
@@ -61,7 +61,7 @@ const deleteTorneio = async (req: Request, res: Response, next: NextFunction) =>
     const id: number = parseInt(req.params.id, 10);
 
     try {
-        const result = await TorneioServices.deleteTorneioService(id);
+        const result = await TorneioServices.deleteTorneio(id);
 
         return res.status(200).send({ message: result });
     } catch (error) {

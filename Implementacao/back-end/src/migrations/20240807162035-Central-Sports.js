@@ -151,11 +151,56 @@ module.exports = {
                 defaultValue: Sequelize.NOW,
             },
         });
+
+        await queryInterface.createTable('Inscricoes', {
+            id: {
+                type: Sequelize.INTEGER,
+                primaryKey: true,
+                autoIncrement: true,
+                allowNull: false,
+            },
+            atletaId: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'Atletas',
+                    key: 'id',
+                },
+                onUpdate: 'CASCADE',
+                onDelete: 'CASCADE',
+            },
+            treinadorModelId: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'Treinadores',
+                    key: 'id',
+                },
+                onUpdate: 'CASCADE',
+                onDelete: 'CASCADE',
+            },
+            torneioId: {
+                type: Sequelize.INTEGER,
+                references: {
+                    model: 'Torneios',
+                    key: 'id',
+                },
+                onUpdate: 'CASCADE',
+                onDelete: 'CASCADE',
+            },
+            createdAt: {
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.NOW,
+            },
+            updatedAt: {
+                type: Sequelize.DATE,
+                defaultValue: Sequelize.NOW,
+            },
+        });
     },
 
     down: async (queryInterface, Sequelize) => {
         await queryInterface.dropTable('Users');
         await queryInterface.dropTable('Treinadores');
         await queryInterface.dropTable('Atletas');
+        await queryInterface.dropTable('Torneios');
     },
 };

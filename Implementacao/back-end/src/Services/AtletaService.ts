@@ -2,9 +2,9 @@ import { Transaction } from 'sequelize';
 import AtletaPersistence from '../Persistence/AtletaPersistense';
 import { any } from 'zod';
 
-const createAtletaService = async (atleta: any, transaction: Transaction) => {
+const createAtleta = async (atleta: any, transaction: Transaction) => {
     try {
-        return await AtletaPersistence.createAtletaPersistense(atleta, transaction);
+        return await AtletaPersistence.createAtleta(atleta, transaction);
     } catch (error) {
         throw error;
     }
@@ -18,7 +18,7 @@ const getAtleta = async (id: number, transaction: Transaction) => {
     }
 };
 
-const updateAtletaServices = async (updates: any, transaction: Transaction) => {
+const updateAtleta = async (updates: any, transaction: Transaction) => {
     try {
         return await AtletaPersistence.updateAtleta(updates, transaction);
     } catch (error) {
@@ -26,7 +26,7 @@ const updateAtletaServices = async (updates: any, transaction: Transaction) => {
     }
 };
 
-const deleteAtletaServices = async (id: number, transaction: Transaction) => {
+const deleteAtleta = async (id: number, transaction: Transaction) => {
     try {
         return await AtletaPersistence.deleteAtleta(id, transaction);
     } catch (error) {
@@ -34,4 +34,4 @@ const deleteAtletaServices = async (id: number, transaction: Transaction) => {
     }
 };
 
-export default { createAtletaService, getAtleta, updateAtletaServices, deleteAtletaServices };
+export default { createAtleta, getAtleta, updateAtleta, deleteAtleta };

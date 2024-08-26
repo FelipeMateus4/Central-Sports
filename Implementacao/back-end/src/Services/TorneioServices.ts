@@ -4,7 +4,7 @@ import { torneioType } from '../Types/TorneioType';
 import { Transaction } from 'sequelize';
 import { any } from 'zod';
 
-const createTorneioService = async (torneio: any) => {
+const createTorneio = async (torneio: any) => {
     try {
         return await TorneioPersistence.createTorneio(torneio);
     } catch (error) {
@@ -12,7 +12,7 @@ const createTorneioService = async (torneio: any) => {
     }
 };
 
-const getTorneioService = async () => {
+const getTorneio = async () => {
     try {
         return await TorneioPersistence.getTorneio();
     } catch (error) {
@@ -20,14 +20,14 @@ const getTorneioService = async () => {
     }
 };
 
-const getTorneioByIdService = async (id: number) => {
+const getTorneioById = async (id: number) => {
     try {
         return await TorneioPersistence.getTorneioById(id);
     } catch (error) {
         throw error;
     }
 };
-const updateTorneioService = async (updates: any) => {
+const updateTorneio = async (updates: any) => {
     try {
         return await TorneioPersistence.updateTorneio(updates);
     } catch (error) {
@@ -35,7 +35,7 @@ const updateTorneioService = async (updates: any) => {
     }
 };
 
-const deleteTorneioService = async (id: number) => {
+const deleteTorneio = async (id: number) => {
     try {
         return await TorneioPersistence.deleteTorneio(id);
     } catch (error) {
@@ -44,9 +44,9 @@ const deleteTorneioService = async (id: number) => {
 };
 
 export default {
-    createTorneioService,
-    getTorneioService,
-    updateTorneioService,
-    deleteTorneioService,
-    getTorneioByIdService,
+    createTorneio,
+    getTorneio,
+    updateTorneio,
+    deleteTorneio,
+    getTorneioById,
 };

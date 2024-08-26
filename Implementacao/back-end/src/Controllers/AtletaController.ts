@@ -28,7 +28,7 @@ const registerAtleta = async (req: Request, res: Response, next: NextFunction) =
     const transaction = await sequelize.transaction();
 
     try {
-        const createdAtleta: any = await AtletaServices.createAtletaService(atleta, transaction);
+        const createdAtleta: any = await AtletaServices.createAtleta(atleta, transaction);
         user.atletaModelId = createdAtleta.id;
 
         const createdUser = await UserServices.createUserServices(user, transaction);
@@ -65,7 +65,7 @@ const updateAtleta = async (req: Request, res: Response, next: NextFunction) => 
 
     try {
         const user: any = await UserServices.updateUserServices(keys, transaction);
-        const atleta: any = await AtletaServices.updateAtletaServices(keys, transaction);
+        const atleta: any = await AtletaServices.updateAtleta(keys, transaction);
 
         await transaction.commit();
 
@@ -82,7 +82,7 @@ const deleteAtleta = async (req: Request, res: Response, next: NextFunction) => 
 
     try {
         const user: any = await UserServices.getUserServices(email, transaction);
-        const atleta: any = await AtletaServices.deleteAtletaServices(user.atletaModelId, transaction);
+        const atleta: any = await AtletaServices.deleteAtleta(user.atletaModelId, transaction);
         await UserServices.deleteUserServices(email, transaction);
 
         await transaction.commit();

@@ -31,7 +31,7 @@ const createTreinador = async (req: Request, res: Response, next: NextFunction) 
     const transaction = await sequelize.transaction();
 
     try {
-        const createdTreinador: any = await TreinadorServices.createTreinadorService(treinador, transaction);
+        const createdTreinador: any = await TreinadorServices.createTreinador(treinador, transaction);
 
         user.treinadorModelId = createdTreinador.id;
 
@@ -54,7 +54,7 @@ const getTreinador = async (req: Request, res: Response, next: NextFunction) => 
 
     try {
         const user: any = await UserServices.getUserServices(email, transaction);
-        const treinador: any = await TreinadorServices.getTreinadorServices(user.treinadorModelId, transaction);
+        const treinador: any = await TreinadorServices.getTreinador(user.treinadorModelId, transaction);
 
         await transaction.commit();
 
@@ -70,7 +70,7 @@ const updateTreinador = async (req: Request, res: Response, next: NextFunction) 
     const transaction = await sequelize.transaction();
 
     try {
-        const updatedTreinador = await TreinadorServices.updateTreinadorServices(updates, transaction);
+        const updatedTreinador = await TreinadorServices.updateTreinador(updates, transaction);
         const updatedUser = await UserServices.updateUserServices(updates, transaction);
         await transaction.commit();
 
@@ -88,7 +88,7 @@ const deleteTreinador = async (req: Request, res: Response, next: NextFunction) 
     const transaction = await sequelize.transaction();
     try {
         const user: any = await UserServices.getUserServices(email, transaction);
-        const result = await TreinadorServices.deleteUserServices(user.treinadorModelId, transaction);
+        const result = await TreinadorServices.deleteUser(user.treinadorModelId, transaction);
         const result2 = await UserServices.deleteUserServices(email, transaction);
         transaction.commit();
         return res.status(200).send({ message: result });

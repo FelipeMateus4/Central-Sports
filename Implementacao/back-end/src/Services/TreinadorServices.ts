@@ -3,7 +3,7 @@ import TreinadorPersistence from '../Persistence/TreinadorPersistence';
 import { treinadorModel } from '../Models/TreinadorModel';
 import { Transaction } from 'sequelize';
 
-const createTreinadorService = (treinador: treinadorType, transaction: Transaction) => {
+const createTreinador = (treinador: treinadorType, transaction: Transaction) => {
     try {
         return TreinadorPersistence.createTreinador(treinador, transaction);
     } catch (error) {
@@ -11,7 +11,7 @@ const createTreinadorService = (treinador: treinadorType, transaction: Transacti
     }
 };
 
-const getTreinadorServices = async (id: number, transaction: Transaction) => {
+const getTreinador = async (id: number, transaction: Transaction) => {
     try {
         return await TreinadorPersistence.getTreinador(id, transaction);
     } catch (error) {
@@ -19,7 +19,7 @@ const getTreinadorServices = async (id: number, transaction: Transaction) => {
     }
 };
 
-const updateTreinadorServices = async (updates: any, transaction: Transaction) => {
+const updateTreinador = async (updates: any, transaction: Transaction) => {
     try {
         return await TreinadorPersistence.updateTreinador(updates, transaction);
     } catch (error) {
@@ -27,7 +27,7 @@ const updateTreinadorServices = async (updates: any, transaction: Transaction) =
     }
 };
 
-const deleteUserServices = async (id: number, transaction: Transaction) => {
+const deleteUser = async (id: number, transaction: Transaction) => {
     try {
         return await TreinadorPersistence.deleteUser(id, transaction);
     } catch (error) {
@@ -35,4 +35,4 @@ const deleteUserServices = async (id: number, transaction: Transaction) => {
     }
 };
 
-export default { createTreinadorService, getTreinadorServices, updateTreinadorServices, deleteUserServices };
+export default { createTreinador, getTreinador, updateTreinador, deleteUser };

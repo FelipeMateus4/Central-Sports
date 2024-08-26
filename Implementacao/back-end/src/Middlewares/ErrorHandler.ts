@@ -50,6 +50,11 @@ const errorHandler = (err: any, req: Request, res: Response, next: NextFunction)
                 message: 'Atleta não encontrado',
                 error: err.message,
             });
+        } else if (err.message === 'Inscrições pendentes') {
+            return res.status(404).send({
+                message: 'A sua conta não pode ser apagada pois possui inscrições pendentes',
+                error: err.message,
+            });
         }
         return res.status(500).send({
             message: 'Internal server error',

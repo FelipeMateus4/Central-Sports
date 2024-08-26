@@ -31,7 +31,7 @@ const deleteUser = async (id: number, transaction: Transaction) => {
     try {
         const inscricoes = await InscricoesPersistence.countInscricaoTreinador(id, transaction);
         if (inscricoes > 0) {
-            throw new Error('Inscriçoẽs pendentes');
+            throw new Error('Inscrições pendentes');
         }
         return await TreinadorPersistence.deleteTreinador(id, transaction);
     } catch (error) {

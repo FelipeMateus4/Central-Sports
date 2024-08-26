@@ -10,8 +10,8 @@ const errorHandler = (err: any, req: Request, res: Response, next: NextFunction)
             message = 'Email já registrado';
         } else if (detail.includes('Chave (username)')) {
             message = 'Nome de usuário já registrado';
-        } else if (detail.includes('Chave (title)')) {
-            message = 'Título do jogo já registrado';
+        } else if (detail.includes('Chave (CPF)')) {
+            message = 'CPF já registrado';
         }
         return res.status(400).send({
             message: message,
@@ -40,9 +40,14 @@ const errorHandler = (err: any, req: Request, res: Response, next: NextFunction)
                 message: 'O usuário não foi encontrado.',
                 error: err.message,
             });
-        } else if (err.message === 'Game not found!') {
+        } else if (err.message === 'Atleta já inscrito em um torneio') {
             return res.status(404).send({
-                message: 'Jogo não encontrado!',
+                message: 'Atleta já inscrito em um torneio',
+                error: err.message,
+            });
+        } else if (err.message === 'Atleta não encontrado') {
+            return res.status(404).send({
+                message: 'Atleta não encontrado',
                 error: err.message,
             });
         }

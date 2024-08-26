@@ -2,7 +2,11 @@ import { InscricaoModel } from '../Models/Inscricões';
 
 const createInscricao = async (inscricao: any) => {
     try {
-        return await InscricaoModel.create(inscricao);
+        return await InscricaoModel.create({
+            atletaModelId: inscricao.atletaId,
+            treinadorModelId: inscricao.treinadorId,
+            torneioModelId: inscricao.torneioId,
+        });
     } catch (error) {
         throw error;
     }
@@ -10,7 +14,7 @@ const createInscricao = async (inscricao: any) => {
 
 const getInscricaoAtleta = async (id: number) => {
     try {
-        return await InscricaoModel.findAll({ where: { atletaId: id } });
+        return await InscricaoModel.findAll({ where: { atletaModelId: id } });
     } catch (error) {
         throw error;
     }
@@ -18,7 +22,7 @@ const getInscricaoAtleta = async (id: number) => {
 
 const countInscricaoAtleta = async (id: number) => {
     try {
-        const count = await InscricaoModel.count({ where: { atletaId: id } });
+        const count = await InscricaoModel.count({ where: { atletaModelId: id } });
         return count;
     } catch (error) {
         throw error;
@@ -27,7 +31,7 @@ const countInscricaoAtleta = async (id: number) => {
 
 const countInscricaoTreinador = async (id: number) => {
     try {
-        const count = await InscricaoModel.count({ where: { TreinadorId: id } });
+        const count = await InscricaoModel.count({ where: { treinadorModelId: id } });
         return count;
     } catch (error) {
         throw error;
@@ -36,14 +40,14 @@ const countInscricaoTreinador = async (id: number) => {
 
 const getInscricaoAdmin = async (id: number) => {
     try {
-        return await InscricaoModel.findAll({ where: { atletaId: id } });
+        return await InscricaoModel.findAll({ where: { atletaModelId: id } });
     } catch (error) {
         throw error;
     }
 };
 const getInscricaoTreinador = async (id: number) => {
     try {
-        return await InscricaoModel.findAll({ where: { TreinadorId: id } });
+        return await InscricaoModel.findAll({ where: { treinadorModelId: id } });
     } catch (error) {
         throw error;
     }

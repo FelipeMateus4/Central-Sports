@@ -159,7 +159,7 @@ module.exports = {
                 autoIncrement: true,
                 allowNull: false,
             },
-            atletaId: {
+            atletaModelId: {
                 type: Sequelize.INTEGER,
                 references: {
                     model: 'Atletas',
@@ -177,7 +177,7 @@ module.exports = {
                 onUpdate: 'CASCADE',
                 onDelete: 'CASCADE',
             },
-            torneioId: {
+            torneioModelId: {
                 type: Sequelize.INTEGER,
                 references: {
                     model: 'Torneios',

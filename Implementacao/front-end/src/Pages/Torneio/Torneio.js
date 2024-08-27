@@ -40,7 +40,7 @@ function TournamentItem({ tournament, onDelete }) {
                         <strong>Quantidade de Vagas:</strong> {tournament.qtdVagas}
                     </p>
                     <p>
-                        <strong>Data:</strong> {tournament.data}
+                        <strong>Data:</strong> {new Date(tournament.data).toLocaleDateString('pt-BR')}
                     </p>
                 </div>
             )}

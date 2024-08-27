@@ -11,6 +11,8 @@ import DeletarTorneio from '../Pages/DeletarTorneio/DeletarTorneio';
 import Authenticate from '../Pages/Authenticate/Authenticate';
 import SelecaoUsuario from '../Pages/SelecaoUsuario/SelecaoUsuario';
 import RegisterAtleta from '../Pages/RegistroAtleta/RegisterAtleta';
+import InscricoesPage from '../Pages/Inscricao/Inscrito';
+import RegisterInscricao from '../Pages/RegistroInscricao/RegisterInscricao';
 
 export const router = createBrowserRouter([
     {
@@ -74,6 +76,22 @@ export const router = createBrowserRouter([
             {
                 path: 'SelecaoUsuario',
                 element: <SelecaoUsuario />,
+            },
+            {
+                path: 'subs',
+                element: (
+                    <ProtectedRoute>
+                        <InscricoesPage />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'create-inscricao',
+                element: (
+                    <ProtectedRoute>
+                        <RegisterInscricao />
+                    </ProtectedRoute>
+                ),
             },
         ],
     },

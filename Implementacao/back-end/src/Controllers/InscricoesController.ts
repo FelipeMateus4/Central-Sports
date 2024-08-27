@@ -2,7 +2,7 @@ import { InscricaoType } from '../Types/InscricoesType';
 import InscricaoService from '../Services/InscricaoService';
 import { Request, Response, NextFunction } from 'express';
 
-const crateInscricao = async (req: Request, res: Response, next: NextFunction) => {
+const createInscricao = async (req: Request, res: Response, next: NextFunction) => {
     const { atletaId, treinadorId, torneioId } = req.body;
 
     const inscricao: InscricaoType = {
@@ -79,11 +79,21 @@ const deleteInscricao = async (req: Request, res: Response, next: NextFunction) 
     }
 };
 
+const getInscricaoAll = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const inscricao = await InscricaoService.getInscricaolist();
+
+        res.status(200).send({ message: 'Veja abaixo os dados da inscricao:', data: { inscricao } });
+    } catch (error) {
+        next(error);
+    }
+};
 export {
-    crateInscricao,
+    createInscricao,
     getInscricaoById,
     getInscricaoAtleta,
     getInscricaoTreinador,
     updateInscricao,
     deleteInscricao,
+    getInscricaoAll,
 };

@@ -88,6 +88,14 @@ const deleteInscricao = async (id: number) => {
     }
 };
 
+const getInscricaoAll = async () => {
+    try {
+        return await InscricaoModel.findAll();
+    } catch (error) {
+        throw error;
+    }
+};
+
 export default {
     createInscricao,
     getInscricaoAtleta,
@@ -97,4 +105,5 @@ export default {
     deleteInscricao,
     countInscricaoTreinador,
     countInscricaoAtleta,
+    getInscricaoAll,
 };

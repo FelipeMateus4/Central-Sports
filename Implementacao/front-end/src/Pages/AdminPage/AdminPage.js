@@ -20,11 +20,11 @@ export const AdminPage = () => {
     };
 
     const handleTorneio = () => {
-        navigate('/torneio'); // Altere o caminho conforme necessário
+        navigate('/torneio');
     };
 
     const handleInscricoes = () => {
-        navigate('/inscricoes'); // Altere o caminho conforme necessário
+        navigate('/subs');
     };
 
     return (

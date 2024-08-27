@@ -62,6 +62,13 @@ const deleteInscricao = async (id: number) => {
     }
 };
 
+const getInscricaolist = async () => {
+    try {
+        return await InscricoesPersistence.getInscricaoAll();
+    } catch (error) {
+        throw error;
+    }
+};
 export default {
     createInscricao,
     getInscricaoAtleta,
@@ -69,4 +76,5 @@ export default {
     getInscricaoTreinador,
     updateInscricao,
     deleteInscricao,
+    getInscricaolist,
 };

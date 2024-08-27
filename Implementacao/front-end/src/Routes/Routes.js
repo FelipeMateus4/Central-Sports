@@ -13,6 +13,7 @@ import SelecaoUsuario from '../Pages/SelecaoUsuario/SelecaoUsuario';
 import RegisterAtleta from '../Pages/RegistroAtleta/RegisterAtleta';
 import InscricoesPage from '../Pages/Inscricao/Inscrito';
 import RegisterInscricao from '../Pages/RegistroInscricao/RegisterInscricao';
+import EditInscricao from '../Pages/EditInscricao/EditInscricao';
 
 export const router = createBrowserRouter([
     {
@@ -90,6 +91,14 @@ export const router = createBrowserRouter([
                 element: (
                     <ProtectedRoute>
                         <RegisterInscricao />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'edit-inscricao/:id',
+                element: (
+                    <ProtectedRoute>
+                        <EditInscricao />
                     </ProtectedRoute>
                 ),
             },

@@ -1,0 +1,87 @@
+.page-section-edit-inscricao {
+    background: url('../../Assets/esporte2.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    animation: gradientBG 9s linear infinite;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.edit-container-inscricao {
+    margin: 50px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    height: 500px; /* Ajustado para acomodar mensagens */
+    padding: 20px;
+    background-color: rgb(15, 22, 48);
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(30px);
+}
+
+.form-group-edit-inscricao {
+    display: flex;
+    flex-direction: row;
+}
+
+.form-group-edit-inscricao input {
+    width: 300px;
+    display: flex;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 0, 0);
+    height: 40px;
+}
+
+.form-group-edit-inscricao label {
+    display: flex;
+    font-size: 15px;
+    color: rgb(240, 240, 240);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.title-edit-inscricao {
+    margin-bottom: 35px;
+    display: flex;
+    font-size: 40px;
+    color: rgb(240, 240, 240);
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.btn-edit-inscricao {
+    margin-left: 75px;
+    width: 150px;
+    color: #ffffff;
+    font-size: 17px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #132f8e;
+    border: 2px solid #020d3a;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+.btn-edit-inscricao:hover {
+    background-color: #001ce6;
+    color: #ffffff;
+}
+
+.success-edit-inscricao {
+    color: #28a745;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.error-edit-inscricao {
+    color: #dc3545;
+    font-size: 18px;
+    margin-bottom: 15px;
+}

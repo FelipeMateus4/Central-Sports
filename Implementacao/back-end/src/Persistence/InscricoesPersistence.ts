@@ -1,5 +1,9 @@
 import { Transaction } from 'sequelize';
 import { InscricaoModel } from '../Models/Inscricões';
+import { atletaModel } from '../Models/AtletaModel';
+import { treinadorModel } from '../Models/TreinadorModel';
+import sequelize from '../Connections/Sequelize';
+import { torneioModel } from '../Models/TorneioModel';
 
 const createInscricao = async (inscricao: any) => {
     try {
@@ -56,25 +60,38 @@ const getInscricaoTreinador = async (id: number) => {
 
 const updateInscricao = async (updates: any) => {
     try {
-        const inscricao: any = await InscricaoModel.findByPk(updates.id);
-        const updateKeys = Object.keys(updates);
-        const field: string[] = [];
-        if (inscricao) {
-            Object.keys(updates).forEach((key) => {
-                if (updateKeys.includes(key)) {
-                    inscricao[key] = updates[key] !== undefined ? updates[key] : inscricao[key];
-                    field.push(key);
-                }
-            });
-        } else {
-            throw new Error('Inscricao not found');
+        console.log(updates);
+
+        // Verifique se a inscrição existe
+        const inscricaoExistente = await InscricaoModel.findOne({ where: { id: updates.id } });
+        if (!inscricaoExistente) {
+            throw new Error('Inscrição não encontrada');
         }
 
-        return await inscricao.save({ field });
+        // Verificar se os IDs estão presentes nos dados de atualização
+        if (!updates.atletaId && !updates.treinadorId && !updates.torneioId) {
+            throw new Error('Pelo menos um dos IDs (atleta, treinador ou torneio) deve ser fornecido.');
+        }
+
+        // Atualizar a inscrição existente com os novos valores
+        await InscricaoModel.update(
+            {
+                atletaModelId: updates.atletaId || inscricaoExistente.atletaModelId,
+                treinadorModelId: updates.treinadorId || inscricaoExistente.treinadorModelId,
+                torneioModelId: updates.torneioId || inscricaoExistente.torneioModelId,
+            },
+            { where: { id: updates.id } }
+        );
+
+        console.log(`Inscrição com ID ${updates.id} foi atualizada.`);
+
+        return await InscricaoModel.findOne({ where: { id: updates.id } });
     } catch (error) {
+        console.error('Erro ao atualizar a inscrição:', error);
         throw error;
     }
 };
+
 const deleteInscricao = async (id: number) => {
     try {
         const confirm = await InscricaoModel.destroy({ where: { id: id } });

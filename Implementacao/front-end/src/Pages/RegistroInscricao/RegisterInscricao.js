@@ -34,7 +34,7 @@ const RegisterInscricao = () => {
                 setError({ message: responseData.message });
                 setSuccess(null);
             } else if (response.status === 500) {
-                setError({ message: 'o atleta nao existe' });
+                setError({ message: 'Verifique se os ids são válidos!' });
                 setSuccess(null);
             } else {
                 setError({ message: responseData.message });
@@ -51,7 +51,7 @@ const RegisterInscricao = () => {
         <div className="page-section-register-inscricao">
             <div className="register-container-inscricao">
                 <h2 className="title-inscricao">Registrar Inscrição</h2>
-                {error && <div className="error-inscricao">{error.message}</div>}
+                {error && <div className="error">{error.message}</div>}
                 {success && <div className="success-inscricao">{success}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group-inscricao">

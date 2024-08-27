@@ -77,7 +77,7 @@ const EditInscricao = () => {
         <div className="page-section-edit-inscricao">
             <div className="edit-container-inscricao">
                 <h2 className="title-edit-inscricao">Editar Inscrição</h2>
-                {error && <div className="error-edit-inscricao">{error}</div>}
+                {error && <div className="error">{error}</div>}
                 {success && <div className="success-edit-inscricao">{success}</div>}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group-edit-inscricao">

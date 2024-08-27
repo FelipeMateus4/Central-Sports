@@ -4,7 +4,7 @@ import './DeletarTorneio.css';
 
 const DeletarTorneio = () => {
     const [confirmado, setConfirmado] = useState(false);
-    const { id } = useParams(); // Obtenha o ID da URL
+    const { id } = useParams();
     const navigate = useNavigate();
 
     const handleConfirmar = async () => {

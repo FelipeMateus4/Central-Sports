@@ -48,7 +48,7 @@ const RegisterTorneio = () => {
         <div className="page-section-register-torneio">
             <div className="register-container-torneio">
                 <h2 className="title-torneio">Register Torneio</h2>
-                {error && <div className="error-torneio">{error.message}</div>}
+                {error && <div className="error">{error.message}</div>}
                 {success && <div className="success-torneio">{success}</div>} {/* Success message */}
                 <form onSubmit={handleSubmit}>
                     <div className="form-group-torneio">

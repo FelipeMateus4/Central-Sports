@@ -14,6 +14,7 @@ import RegisterAtleta from '../Pages/RegistroAtleta/RegisterAtleta';
 import InscricoesPage from '../Pages/Inscricao/Inscrito';
 import RegisterInscricao from '../Pages/RegistroInscricao/RegisterInscricao';
 import EditInscricao from '../Pages/EditInscricao/EditInscricao';
+import DeletarInscricao from '../Pages/DeletarInscricao/DeletarInscricao';
 
 export const router = createBrowserRouter([
     {
@@ -99,6 +100,14 @@ export const router = createBrowserRouter([
                 element: (
                     <ProtectedRoute>
                         <EditInscricao />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'delete-inscricao/:id',
+                element: (
+                    <ProtectedRoute>
+                        <DeletarInscricao />
                     </ProtectedRoute>
                 ),
             },

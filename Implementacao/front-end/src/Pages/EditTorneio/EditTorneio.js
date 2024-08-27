@@ -81,7 +81,7 @@ const EditTorneio = () => {
 
     return (
         <div className="page-section-edit-torneio">
-            <div className="edit-container-torneio">
+            <div className="edit">
                 <h2 className="title-edit-torneio">Editar Torneio</h2>
                 {error && <div className="error-edit-torneio">{error}</div>}
                 {success && <div className="success-edit-torneio">{success}</div>}

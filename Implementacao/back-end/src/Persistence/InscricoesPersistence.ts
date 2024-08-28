@@ -1,5 +1,5 @@
 import { Transaction } from 'sequelize';
-import { InscricaoModel } from '../Models/Inscricoes';
+import { InscricaoModel } from '../Models/Inscricao';
 import { atletaModel } from '../Models/AtletaModel';
 import { treinadorModel } from '../Models/TreinadorModel';
 import sequelize from '../Connections/Sequelize';

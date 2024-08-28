@@ -23,4 +23,4 @@ router.get('/:id', ensureAuthenticated, getInscricaoById, errorHandler);
 router.get('/', ensureAuthenticated, getInscricaoAll, errorHandler);
 router.get('/treinador/atletas/:id', ensureAuthenticated, getAtletasByTreinadorId, errorHandler);
 
-export { router as inscricaoRoutes };
+export { router as inscricaoRoute };

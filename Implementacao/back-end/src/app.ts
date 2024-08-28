@@ -9,7 +9,7 @@ import { authRouter } from './Routes/AuthRoute';
 import { config } from 'dotenv';
 import { userAtletaRoutes } from './Routes/UserAtletaRoute';
 import { torneioRoutes } from './Routes/TorneioRoute';
-import { inscricaoRoutes } from './Routes/InscricaoRoutes';
+import { inscricaoRoute } from './Routes/InscricaoRoute';
 
 config();
 const app = express();
@@ -49,6 +49,6 @@ app.use('/auth', authRouter);
 app.use('/treinador', TreinadorRoutes);
 app.use('/atleta', userAtletaRoutes);
 app.use('/torneio', torneioRoutes);
-app.use('/inscricao', inscricaoRoutes);
+app.use('/inscricao', inscricaoRoute);
 
 export { app };

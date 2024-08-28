@@ -20,6 +20,20 @@ const createInscricao = async (req: Request, res: Response, next: NextFunction) 
     }
 };
 
+const getAtletasByTreinadorId = async (req: Request, res: Response, next: NextFunction) => {
+    const treinadorId = parseInt(req.params.id, 10); // Captura o ID do treinador da URL
+
+    try {
+        const inscricoes = await InscricaoService.getInscricoesByTreinadorId(treinadorId);
+
+        // Extrai apenas os nomes dos atletas das inscrições
+        const atletasNomes = inscricoes.map((inscricao) => inscricao.name);
+
+        return res.status(200).send({ message: 'Lista de atletas relacionados:', data: { atletasNomes } });
+    } catch (error) {
+        next(error);
+    }
+};
 const getInscricaoById = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const id: number = parseInt(req.params.id, 10);
@@ -96,4 +110,5 @@ export {
     updateInscricao,
     deleteInscricao,
     getInscricaoAll,
+    getAtletasByTreinadorId,
 };

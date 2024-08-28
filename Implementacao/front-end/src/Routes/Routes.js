@@ -16,6 +16,7 @@ import RegisterInscricao from '../Pages/RegistroInscricao/RegisterInscricao';
 import EditInscricao from '../Pages/EditInscricao/EditInscricao';
 import DeletarInscricao from '../Pages/DeletarInscricao/DeletarInscricao';
 import PrincipalPage from '../Pages/PrincipalPage/PrincipalPage';
+import ListaAtletas from '../Pages/PageListAtletas/PageListAtletas';
 
 export const router = createBrowserRouter([
     {
@@ -69,7 +70,7 @@ export const router = createBrowserRouter([
                 ),
             },
             {
-                path: 'authenticate',
+                path: 'authenticate/:id',
                 element: (
                     <ProtectedRoute>
                         <Authenticate />
@@ -117,6 +118,14 @@ export const router = createBrowserRouter([
                 element: (
                     <ProtectedRoute>
                         <PrincipalPage />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'treinador/atletas/:id',
+                element: (
+                    <ProtectedRoute>
+                        <ListaAtletas />
                     </ProtectedRoute>
                 ),
             },

@@ -1,5 +1,6 @@
 import InscricoesPersistence from '../Persistence/InscricoesPersistence';
 import TorneioPersistence from '../Persistence/TorneioPersistence';
+import AtletaPersistense from '../Persistence/AtletaPersistense';
 
 const createInscricao = async (inscricao: any) => {
     try {
@@ -22,10 +23,61 @@ const createInscricao = async (inscricao: any) => {
     }
 };
 
+const getInscricoesByTreinadorId = async (id: number) => {
+    let nome;
+    try {
+        const inscricoes: any[] = await InscricoesPersistence.getInscricaoTreinador(id);
+        if (inscricoes.length === 0) {
+            throw new Error('Nenhuma inscrição encontrada');
+        }
+
+        const inscricoesComAtletas = [];
+
+        for (const inscricao of inscricoes) {
+            const atletaId = inscricao.dataValues.atletaModelId;
+
+            if (atletaId) {
+                const atleta: any = await AtletaPersistense.getAtleta(atletaId);
+                console.log(atleta);
+
+                if (atleta) {
+                    nome = atleta; // Adiciona o nome do atleta à inscrição
+                }
+            }
+
+            inscricoesComAtletas.push(nome);
+        }
+        return inscricoesComAtletas; // Retorna o array completo de inscrições com os nomes dos atletas
+    } catch (error) {
+        console.error('Erro ao buscar inscrições:', error);
+        throw error;
+    }
+};
 const getInscricaoAtleta = async (id: number) => {
     try {
-        return await InscricoesPersistence.getInscricaoAtleta(id);
+        const inscricoes: any[] = await InscricoesPersistence.getInscricaoAtleta(id);
+
+        if (inscricoes.length === 0) {
+            throw new Error('Nenhuma inscrição encontrada');
+        }
+
+        const torneios = [];
+
+        // Para cada inscrição, busca o torneio associado e adiciona ao array
+        for (const inscricao of inscricoes) {
+            const torneioId = inscricao.dataValues.torneioModelId;
+
+            if (torneioId) {
+                const torneio = await TorneioPersistence.getTorneioById(torneioId);
+                if (torneio) {
+                    torneios.push(torneio); // Adiciona o objeto completo do torneio ao array
+                }
+            }
+        }
+
+        return torneios; // Retorna o array completo de objetos Torneio
     } catch (error) {
+        console.error('Erro ao buscar torneios:', error);
         throw error;
     }
 };
@@ -98,4 +150,5 @@ export default {
     updateInscricao,
     deleteInscricao,
     getInscricaolist,
+    getInscricoesByTreinadorId,
 };

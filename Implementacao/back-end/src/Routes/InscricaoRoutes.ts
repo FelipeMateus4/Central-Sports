@@ -9,6 +9,7 @@ import {
     getInscricaoTreinador,
     updateInscricao,
     getInscricaoAll,
+    getAtletasByTreinadorId,
 } from '../Controllers/InscricoesController';
 
 const router = Router();
@@ -20,5 +21,6 @@ router.get('/treinador/:id', ensureAuthenticated, getInscricaoTreinador, errorHa
 router.get('/atleta/:id', ensureAuthenticated, getInscricaoAtleta, errorHandler);
 router.get('/:id', ensureAuthenticated, getInscricaoById, errorHandler);
 router.get('/', ensureAuthenticated, getInscricaoAll, errorHandler);
+router.get('/treinador/atletas/:id', ensureAuthenticated, getAtletasByTreinadorId, errorHandler);
 
 export { router as inscricaoRoutes };

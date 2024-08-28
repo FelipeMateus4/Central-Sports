@@ -37,7 +37,7 @@ const PrincipalPage = () => {
         fetchInscricoes();
     }, [id, user]);
     const handleViewAtletas = () => {
-        navigate('/treinador/atletas');
+        navigate(`/treinador/atletas/${id}`);
     };
 
     return (
@@ -53,7 +53,7 @@ const PrincipalPage = () => {
                     </button>
                 )}
 
-                <h2 className="dashboard-subtitle">Torneios em que você está participando:</h2>
+                <h2 className="dashboard-subtitle">Torneios em que você está inscrito:</h2>
                 <ul className="inscricoes-list">
                     {inscricoes.map((inscricao) => (
                         <li key={inscricao.name} className="inscricao-item">

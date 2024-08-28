@@ -36,7 +36,7 @@ const Login = () => {
                 if (data.user.type === 'admin') {
                     navigate(`/admin`);
                 } else {
-                    navigate(`/principal/${treinadorId}`);
+                    navigate(`/authenticate/${treinadorId}`);
                 }
             } else if (response.status === 401) {
                 console.log('Não autorizado');

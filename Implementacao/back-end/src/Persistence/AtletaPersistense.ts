@@ -9,7 +9,7 @@ const createAtleta = async (atleta: any, transaction: Transaction) => {
     }
 };
 
-const getAtleta = async (id: number, transaction: Transaction) => {
+const getAtleta = async (id: number, transaction?: Transaction) => {
     try {
         return await atletaModel.findByPk(id, { transaction });
     } catch (error) {

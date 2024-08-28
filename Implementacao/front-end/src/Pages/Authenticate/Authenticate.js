@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Authenticate.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../Context/AuthContext';
 
 const Authenticate = () => {
+    const { user } = useContext(AuthContext);
     const [token, setToken] = useState('');
     const [timer, setTimer] = useState(60);
     const [error, setError] = useState(null);
@@ -33,7 +36,13 @@ const Authenticate = () => {
             console.log(data);
 
             if (response.status === 200) {
-                navigate('/admin');
+                const treinadorId = user.treinadorModelId;
+                console.log('Tipo de usuário:', user.type);
+                if (user.type === 'admin') {
+                    navigate(`/admin`);
+                } else {
+                    navigate(`/principal/${treinadorId}`);
+                }
             } else if (response.status === 401) {
                 console.log('Não autorizado');
                 setError({ message: data.message });

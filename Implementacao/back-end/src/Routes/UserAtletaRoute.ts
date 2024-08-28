@@ -8,6 +8,6 @@ const router = Router();
 router.post('/', registerAtleta, errorHandler);
 router.patch('/', ensureAuthenticated, updateAtleta, errorHandler);
 router.delete('/', ensureAuthenticated, deleteAtleta, errorHandler);
-router.get('/', ensureAuthenticated, getAtleta, errorHandler);
+router.get('/:id', ensureAuthenticated, getAtleta, errorHandler);
 
 export { router as userAtletaRoutes };

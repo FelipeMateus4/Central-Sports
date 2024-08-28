@@ -58,4 +58,12 @@ const deleteUser = async (email: string, transaction: Transaction) => {
     }
 };
 
-export default { createUser, getUser, updateUser, deleteUser };
+const getUserById = async (id: number, transaction: Transaction) => {
+    try {
+        return await userModel.findByPk(id, { transaction });
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default { createUser, getUser, updateUser, deleteUser, getUserById };

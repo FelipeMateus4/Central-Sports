@@ -37,4 +37,12 @@ const deleteUserServices = async (email: string, transaction: Transaction) => {
     }
 };
 
-export default { createUserServices, getUserServices, updateUserServices, deleteUserServices };
+const getUserById = async (id: number, transaction: Transaction) => {
+    try {
+        return await UserPersistence.getUserById(id, transaction);
+    } catch (error) {
+        throw error;
+    }
+};
+
+export default { createUserServices, getUserServices, updateUserServices, deleteUserServices, getUserById };

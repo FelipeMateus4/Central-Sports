@@ -43,11 +43,11 @@ const registerAtleta = async (req: Request, res: Response, next: NextFunction) =
 };
 
 const getAtleta = async (req: Request, res: Response, next: NextFunction) => {
-    const email = req.body.email;
+    const id: number = parseInt(req.params.id);
     const transaction = await sequelize.transaction();
 
     try {
-        const user: any = await UserServices.getUserServices(email, transaction);
+        const user: any = await UserServices.getUserById(id, transaction);
         const atleta: any = await AtletaServices.getAtleta(user.atletaModelId, transaction);
 
         await transaction.commit();

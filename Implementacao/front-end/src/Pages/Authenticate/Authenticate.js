@@ -36,12 +36,12 @@ const Authenticate = () => {
             console.log(data);
 
             if (response.status === 200) {
-                const treinadorId = user.treinadorModelId;
-                console.log('Tipo de usuário:', user.type);
+                const treinadorId = user.id;
+                console.log('Tipo de usuário:', treinadorId);
                 if (user.type === 'admin') {
                     navigate(`/admin`);
                 } else {
-                    navigate(`/principal/${treinadorId}`);
+                    navigate(`/perfil-atleta/${treinadorId}`);
                 }
             } else if (response.status === 401) {
                 console.log('Não autorizado');

@@ -1,0 +1,88 @@
+/* Estilo geral da página do perfil */
+.perfil-atleta-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    background-color: #f7f7f7;
+    max-width: 700px;
+}
+
+/* Título do perfil */
+.perfil-titulo {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Detalhes do perfil */
+.perfil-detalhes {
+    width: 100%;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Estilo para os parágrafos dentro dos detalhes */
+.perfil-detalhes p {
+    font-size: 18px;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* Destaque para os títulos dos campos */
+.perfil-detalhes p strong {
+    color: #333;
+    display: inline-block;
+    width: 150px; /* Largura fixa para alinhar os campos */
+}
+
+/* Botões de ação */
+.perfil-button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #5bc0de;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.perfil-button:hover {
+    background-color: #31b0d5;
+}
+
+.perfil-button-delete {
+    background-color: #d9534f;
+}
+
+.perfil-button-delete:hover {
+    background-color: #c9302c;
+}
+
+/* Estilo para mensagens de erro */
+.error {
+    color: #d9534f;
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Estilo para mensagem de carregamento */
+.loading {
+    font-size: 20px;
+    color: #666;
+    margin-top: 20px;
+    text-align: center;
+}

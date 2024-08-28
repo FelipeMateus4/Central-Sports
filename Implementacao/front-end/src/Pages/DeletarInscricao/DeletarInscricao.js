@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './DeletarInscricao.css';
 
-const DeletarTorneio = () => {
+const DeletarInscricao = () => {
     const [confirmado, setConfirmado] = useState(false);
     const { id } = useParams();
     const navigate = useNavigate();
@@ -58,4 +58,4 @@ const DeletarTorneio = () => {
     );
 };
 
-export default DeletarTorneio;
+export default DeletarInscricao;

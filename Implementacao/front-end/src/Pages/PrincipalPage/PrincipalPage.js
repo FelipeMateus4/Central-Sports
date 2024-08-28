@@ -36,12 +36,13 @@ const PrincipalPage = () => {
 
         fetchInscricoes();
     }, [id, user]);
+
     const handleViewAtletas = () => {
         navigate(`/treinador/atletas/${id}`);
     };
 
     return (
-        <div className="page-section">
+        <div className="page-section-2">
             <div className="dashboard-container">
                 <h1 className="dashboard-title">Bem-vindo, {user.name}</h1>
                 <p className="dashboard-info">
@@ -57,7 +58,8 @@ const PrincipalPage = () => {
                 <ul className="inscricoes-list">
                     {inscricoes.map((inscricao) => (
                         <li key={inscricao.name} className="inscricao-item">
-                            Torneio: {inscricao.name} {/* Substitua por informações detalhadas do torneio */}
+                            <strong>Torneio:</strong> {inscricao.name}{' '}
+                            {/* Substitua por informações detalhadas do torneio */}
                         </li>
                     ))}
                 </ul>

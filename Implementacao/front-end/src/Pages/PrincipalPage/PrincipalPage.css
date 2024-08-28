@@ -1,4 +1,4 @@
-.page-section {
+.page-section-2 {
     background: url('../../Assets/esporte2.jpg') no-repeat center center;
     background-size: cover;
     display: flex;
@@ -12,35 +12,37 @@
 }
 
 .dashboard-container {
-    background-color: #f4f4f467;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
+    background-color: rgba(244, 244, 244, 0.4); /* Ajuste de opacidade para melhor visibilidade do texto */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    max-width: 650px;
     width: 100%;
     text-align: center;
 }
 
 .dashboard-title {
-    font-size: 28px;
-    margin-bottom: 20px;
+    font-size: 30px;
+    margin-bottom: 25px;
     color: #333;
+    font-weight: bold;
 }
 
 .dashboard-info {
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 25px;
     color: #555;
 }
 
 .dashboard-button {
-    font-size: 16px;
-    padding: 10px 20px;
-    margin: 5px;
+    font-size: 18px;
+    padding: 12px 24px;
+    margin: 10px 0;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 .view-atletas-button {
@@ -50,4 +52,32 @@
 
 .view-atletas-button:hover {
     background-color: #31b0d5;
+}
+
+.dashboard-subtitle {
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
+.inscricoes-list {
+    list-style: none;
+    padding: 0;
+}
+
+.inscricao-item {
+    background-color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    color: #555;
+    text-align: left;
+}
+
+.inscricao-item strong {
+    color: #333;
 }

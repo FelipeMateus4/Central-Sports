@@ -6,7 +6,7 @@ import { ensureAuthenticated } from '../Middlewares/IsAuthenticated';
 const router = Router();
 
 router.post('/', registerAtleta, errorHandler);
-router.patch('/', ensureAuthenticated, updateAtleta, errorHandler);
+router.put('/', ensureAuthenticated, updateAtleta, errorHandler);
 router.delete('/', ensureAuthenticated, deleteAtleta, errorHandler);
 router.get('/:id', ensureAuthenticated, getAtleta, errorHandler);
 

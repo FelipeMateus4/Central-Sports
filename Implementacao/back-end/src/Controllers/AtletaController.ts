@@ -60,17 +60,34 @@ const getAtleta = async (req: Request, res: Response, next: NextFunction) => {
 };
 
 const updateAtleta = async (req: Request, res: Response, next: NextFunction) => {
-    const keys = req.body;
+    const { id, ...updatedData } = req.body;
     const transaction = await sequelize.transaction();
 
     try {
-        const user: any = await UserServices.updateUserServices(keys, transaction);
-        const atleta: any = await AtletaServices.updateAtleta(keys, transaction);
+        console.log('Iniciando atualização do usuário com ID:', id);
+
+        // Atualiza o usuário com base no ID
+        const user = await UserServices.updateUserServices({ id: id, ...updatedData }, transaction);
+
+        if (!user) {
+            throw new Error('Usuário não encontrado ou não atualizado');
+        }
+        console.log('Usuário atualizado:', user);
+
+        // Verifica se o atletaModelId existe antes de tentar atualizar o atleta
+        if (user.atletaModelId) {
+            console.log('Atualizando atleta com ID:', user.atletaModelId);
+            const atleta = await AtletaServices.updateAtleta({ id: user.atletaModelId, ...updatedData }, transaction);
+            console.log('Atleta atualizado:', atleta);
+        } else {
+            console.log('Nenhum atleta associado ao usuário.');
+        }
 
         await transaction.commit();
 
-        return res.status(200).send({ message: 'Veja abaixo seus dados atualizados', data: { user, atleta } });
+        return res.status(200).send({ message: 'Perfil atualizado com sucesso', data: { user } });
     } catch (error) {
+        console.error('Erro durante a atualização:', error);
         await transaction.rollback();
         next(error);
     }

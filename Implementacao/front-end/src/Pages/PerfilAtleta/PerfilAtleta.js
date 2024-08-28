@@ -60,7 +60,7 @@ const PerfilAtleta = () => {
             const url = user.type === 'atleta' ? 'http://localhost:5000/atleta' : 'http://localhost:5000/treinador';
 
             const response = await fetch(url, {
-                method: 'PATCH',
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },

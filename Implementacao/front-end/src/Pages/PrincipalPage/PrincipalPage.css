@@ -1,0 +1,53 @@
+.page-section {
+    background: url('../../Assets/esporte2.jpg') no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 20px;
+    margin: 0;
+    height: 100vh;
+}
+
+.dashboard-container {
+    background-color: #f4f4f467;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+.dashboard-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.dashboard-info {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.dashboard-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-atletas-button {
+    background-color: #5bc0de;
+    color: #fff;
+}
+
+.view-atletas-button:hover {
+    background-color: #31b0d5;
+}

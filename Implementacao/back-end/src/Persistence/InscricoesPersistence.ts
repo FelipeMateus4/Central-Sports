@@ -45,7 +45,7 @@ const countInscricaoTreinador = async (id: number, transaction?: Transaction) =>
 
 const getInscricaoAdmin = async (id: number) => {
     try {
-        return await InscricaoModel.findAll({ where: { atletaModelId: id } });
+        return await InscricaoModel.findAll({ where: { treinadorModelId: id } });
     } catch (error) {
         throw error;
     }

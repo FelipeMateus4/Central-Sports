@@ -45,7 +45,7 @@ const getInscricaoAtleta = async (req: Request, res: Response, next: NextFunctio
 };
 
 const getInscricaoTreinador = async (req: Request, res: Response, next: NextFunction) => {
-    const treinadorId = req.body.treinadorId;
+    const treinadorId: number = parseInt(req.params.id, 10);
 
     try {
         const inscricao = await InscricaoService.getInscricaoTreinador(treinadorId);

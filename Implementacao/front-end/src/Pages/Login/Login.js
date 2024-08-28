@@ -24,12 +24,20 @@ const Login = () => {
             });
 
             const data = await response.json();
-            console.log(data);
 
             if (response.status === 200) {
                 loginAuth(data.user);
                 console.log('Logado com sucesso');
-                navigate('/authenticate');
+
+                // Supondo que data.user contenha o treinadorId
+                console.log('Treinador ID:', data.user.treinadorModelId);
+                const treinadorId = data.user.treinadorModelId;
+                console.log('Tipo de usuário:', data.user.type);
+                if (data.user.type === 'admin') {
+                    navigate(`/admin`);
+                } else {
+                    navigate(`/principal/${treinadorId}`);
+                }
             } else if (response.status === 401) {
                 console.log('Não autorizado');
                 setError({ message: data.message });

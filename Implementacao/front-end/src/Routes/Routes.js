@@ -15,6 +15,7 @@ import InscricoesPage from '../Pages/Inscricao/Inscrito';
 import RegisterInscricao from '../Pages/RegistroInscricao/RegisterInscricao';
 import EditInscricao from '../Pages/EditInscricao/EditInscricao';
 import DeletarInscricao from '../Pages/DeletarInscricao/DeletarInscricao';
+import PrincipalPage from '../Pages/PrincipalPage/PrincipalPage';
 
 export const router = createBrowserRouter([
     {
@@ -108,6 +109,14 @@ export const router = createBrowserRouter([
                 element: (
                     <ProtectedRoute>
                         <DeletarInscricao />
+                    </ProtectedRoute>
+                ),
+            },
+            {
+                path: 'principal/:id',
+                element: (
+                    <ProtectedRoute>
+                        <PrincipalPage />
                     </ProtectedRoute>
                 ),
             },

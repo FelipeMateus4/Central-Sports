@@ -40,8 +40,29 @@ const getInscricaoAll = async (id: number) => {
 
 const getInscricaoTreinador = async (id: number) => {
     try {
-        return await InscricoesPersistence.getInscricaoTreinador(id);
+        const inscricoes: any[] = await InscricoesPersistence.getInscricaoTreinador(id);
+
+        if (inscricoes.length === 0) {
+            throw new Error('Nenhuma inscrição encontrada');
+        }
+
+        const torneios = [];
+
+        // Para cada inscrição, busca o torneio associado e adiciona ao array
+        for (const inscricao of inscricoes) {
+            const torneioId = inscricao.dataValues.torneioModelId;
+
+            if (torneioId) {
+                const torneio = await TorneioPersistence.getTorneioById(torneioId);
+                if (torneio) {
+                    torneios.push(torneio); // Adiciona o objeto completo do torneio ao array
+                }
+            }
+        }
+
+        return torneios; // Retorna o array completo de objetos Torneio
     } catch (error) {
+        console.error('Erro ao buscar torneios:', error);
         throw error;
     }
 };

@@ -16,7 +16,8 @@ router.post('/', ensureAuthenticated, createInscricao, errorHandler);
 router.patch('/', ensureAuthenticated, updateInscricao, errorHandler);
 router.delete('/:id', ensureAuthenticated, deleteInscricao, errorHandler);
 // router.get('/', ensureAuthenticated, getInscricaoAtleta, errorHandler);
-router.get('/treinador', ensureAuthenticated, getInscricaoTreinador, errorHandler);
+router.get('/treinador/:id', ensureAuthenticated, getInscricaoTreinador, errorHandler);
+router.get('/atleta/:id', ensureAuthenticated, getInscricaoAtleta, errorHandler);
 router.get('/:id', ensureAuthenticated, getInscricaoById, errorHandler);
 router.get('/', ensureAuthenticated, getInscricaoAll, errorHandler);
 

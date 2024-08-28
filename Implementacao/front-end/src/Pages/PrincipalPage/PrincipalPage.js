@@ -41,6 +41,10 @@ const PrincipalPage = () => {
         navigate(`/treinador/atletas/${id}`);
     };
 
+    const handleViewPerfil = () => {
+        navigate(`/perfil/${user.id}`);
+    };
+
     return (
         <div className="page-section-2">
             <div className="dashboard-container">
@@ -53,6 +57,10 @@ const PrincipalPage = () => {
                         Ver Atletas Relacionados
                     </button>
                 )}
+
+                <button className="dashboard-button view-perfil-button" onClick={handleViewPerfil}>
+                    Ver Perfil
+                </button>
 
                 <h2 className="dashboard-subtitle">Torneios em que você está inscrito:</h2>
                 <ul className="inscricoes-list">

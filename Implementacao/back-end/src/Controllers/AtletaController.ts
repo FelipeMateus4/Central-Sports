@@ -77,13 +77,13 @@ const updateAtleta = async (req: Request, res: Response, next: NextFunction) => 
 };
 
 const deleteAtleta = async (req: Request, res: Response, next: NextFunction) => {
-    const email = req.body.email;
+    const id: number = parseInt(req.body.id);
     const transaction = await sequelize.transaction();
 
     try {
-        const user: any = await UserServices.getUserServices(email, transaction);
+        const user: any = await UserServices.getUserServices(id, transaction);
         const atleta: any = await AtletaServices.deleteAtleta(user.atletaModelId, transaction);
-        await UserServices.deleteUserServices(email, transaction);
+        await UserServices.deleteUserServices(user.email, transaction);
 
         await transaction.commit();
 

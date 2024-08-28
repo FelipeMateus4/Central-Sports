@@ -11,9 +11,9 @@ const createUser = async (user: userType, transaction: Transaction) => {
     }
 };
 
-const getUser = async (email: string, transaction: Transaction) => {
+const getUser = async (id: number, transaction: Transaction) => {
     try {
-        return await userModel.findOne({ where: { email: email }, transaction: transaction });
+        return await userModel.findByPk(id, { transaction });
     } catch (error) {
         throw error;
     }

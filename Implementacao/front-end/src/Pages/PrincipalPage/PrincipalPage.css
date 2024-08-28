@@ -81,3 +81,22 @@
 .inscricao-item strong {
     color: #333;
 }
+
+.dashboard-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.view-perfil-button {
+    background-color: #4caf50; /* Verde */
+    color: white;
+    margin-left: 10px; /* Adiciona a margem à esquerda */
+}
+
+.view-perfil-button:hover {
+    background-color: #45a049; /* Cor um pouco mais escura para o efeito de hover */
+}

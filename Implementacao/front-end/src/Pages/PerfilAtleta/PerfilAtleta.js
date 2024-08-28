@@ -91,7 +91,7 @@ const PerfilAtleta = () => {
                     'Content-Type': 'application/json',
                 },
                 credentials: 'include',
-                body: JSON.stringify({ email: user.email }), // O backend espera o email do usuário
+                body: JSON.stringify({ id: user.id }), // O backend espera o email do usuário
             });
 
             if (response.status === 200) {

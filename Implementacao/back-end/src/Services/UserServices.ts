@@ -13,9 +13,9 @@ const createUserServices = async (user: userType, transaction: Transaction) => {
     }
 };
 
-const getUserServices = async (email: string, transaction: Transaction) => {
+const getUserServices = async (id: number, transaction: Transaction) => {
     try {
-        return await UserPersistence.getUser(email, transaction);
+        return await UserPersistence.getUser(id, transaction);
     } catch (error) {
         throw error;
     }

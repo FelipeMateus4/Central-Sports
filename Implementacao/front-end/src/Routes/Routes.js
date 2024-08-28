@@ -131,7 +131,7 @@ export const router = createBrowserRouter([
                 ),
             },
             {
-                path: 'perfil-atleta/:id',
+                path: 'perfil/:id',
                 element: (
                     <ProtectedRoute>
                         <PerfilAtleta />
